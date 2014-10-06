@@ -2,6 +2,7 @@ package com.airsystem.sample.cms.domain;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -18,12 +19,20 @@ public class Employee {
 	@Id
 	private int mId;
 
+	@Column(name = "name")
 	private String mName;
+
+	@Column(name = "gender")
 	private String mGender;
+
+	@Column(name = "phone")
 	private String mPhone;
+
+	@Column(name = "email")
 	private String mEmail;
 
 	@Temporal(TemporalType.DATE)
+	@Column(name = "birthdate")
 	private Date mBirthdate;
 
 	public int getId() {

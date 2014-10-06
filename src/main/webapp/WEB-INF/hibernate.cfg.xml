@@ -19,7 +19,7 @@
 		<property name="c3p0.timeout">1024</property>
 
 		<!-- Hibernate Beans -->
-		<mapping class="com.airsystem.sample.cms.domain.User" />
+		<mapping class="com.airsystem.sample.cms.domain.UserApp" />
 		<mapping class="com.airsystem.sample.cms.domain.Employee" />
 	</session-factory>
 </hibernate-configuration>

@@ -17,7 +17,7 @@
 	</security:http>
 
 	<security:authentication-manager alias="authenticationManager">
-		<security:authentication-provider user-service-ref="userAppService">
+		<security:authentication-provider user-service-ref="userDetailsService">
 			<security:password-encoder hash="sha" />
 		</security:authentication-provider>
 	</security:authentication-manager>

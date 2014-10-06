@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Login &middot; CMS</title>
+<title>Employee Data &middot; CMS</title>
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,18 +15,7 @@
 </head>
 <body>
 	<div class="container">
-		<div class="row">
-			<div class="col-sm-6 col-md-4 col-md-offset-4">
-				<div class="account-wall">
-					<img class="profile-img" src="<c:url value="/res/assets/admin.png"/>">
-					<form class="form-signin" method="post" action="<c:url value="/login"/>">
-						<input type="text" class="form-control" placeholder="Username" name="username" required autofocus>
-						<input type="password" class="form-control" placeholder="Password" name="password" required>
-						<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-					</form>
-				</div>
-			</div>
-		</div>
+		<h1>HELLO!</h1>
 	</div>
 
 	<!-- JS -->

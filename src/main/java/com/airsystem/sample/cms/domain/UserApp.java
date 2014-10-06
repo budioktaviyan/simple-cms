@@ -1,5 +1,6 @@
 package com.airsystem.sample.cms.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -10,9 +11,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tbl_user")
-public class User {
+public class UserApp {
 	@Id
+	@Column(name = "username")
 	private String mUsername;
+
+	@Column(name = "password")
 	private String mPassword;
 
 	public String getUsername() {
