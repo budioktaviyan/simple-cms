@@ -26,8 +26,8 @@ public class UserAppController {
 	private static final Logger LOG = Logger.getLogger(UserAppController.class.getSimpleName());
 
 	private static final String URI_LOGIN = "login";
-	private static final String URI_EMPLOYEE = "/master/employee";
-	private static final String URI_REDIRECT_EMPLOYEE = "redirect:/master/employee";
+	private static final String URI_EMPLOYEE = "master/employee";
+	private static final String URI_REDIRECT_EMPLOYEE = "redirect:master/employee";
 
 	@Resource(name = "authenticationManager")
 	private AuthenticationManager authenticationManager;
@@ -53,7 +53,7 @@ public class UserAppController {
 			Authentication authentication = authenticationManager.authenticate(authenticationToken);
 			SecurityContextHolder.getContext().setAuthentication(authentication);
 
-			return URI_EMPLOYEE;
+			return URI_REDIRECT_EMPLOYEE;
 		} catch (AuthenticationException e) {
 			LOG.error(e.getMessage(), e);
 			return URI_LOGIN;

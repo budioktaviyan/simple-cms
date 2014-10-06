@@ -7,7 +7,6 @@
 	<artifactId>simple-cms</artifactId>
 	<version>1.0</version>
 	<packaging>war</packaging>
-	<name>Simple-CMS</name>
 	<description>Spring Framework CMS Template</description>
 
 	<properties>
@@ -148,7 +147,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>${project.groupId}</mainClass>
+							<addClasspath>true</addClasspath>
 						</manifest>
 					</archive>
 				</configuration>
