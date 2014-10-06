@@ -11,10 +11,9 @@
 	<security:http use-expressions="true" disable-url-rewriting="true">
 		<security:intercept-url pattern="/login" access="permitAll" />
 		<security:intercept-url pattern="/*" access="hasRole('ROLE_ADMIN')" />
-		<security:intercept-url pattern="/master/*" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/master/**" access="hasRole('ROLE_ADMIN')" />
 		<security:form-login login-page="/login" default-target-url="/" />
 		<security:logout invalidate-session="true" logout-success-url="/logout" delete-cookies="JSESSIONID" />
-		<security:access-denied-handler error-page="/denied" />
 	</security:http>
 
 	<security:authentication-manager alias="authenticationManager">

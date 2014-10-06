@@ -12,7 +12,6 @@ public class Constraint {
 	private Map<String, Object> mParameters;
 
 	public Constraint() {
-		mWhereClause = null;
 		mParameters = new HashMap<String, Object>();
 	}
 

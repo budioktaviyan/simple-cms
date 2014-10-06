@@ -34,7 +34,7 @@ public class UserAppService implements UserDetailsService {
 
 		List users = databaseService.findUser(parameters);
 		if (users.size() == 0) {
-			throw new UsernameNotFoundException("user not found");
+			throw new UsernameNotFoundException("User Not Found!");
 		}
 
 		UserApp userEntity = (UserApp) users.get(0);
@@ -46,7 +46,8 @@ public class UserAppService implements UserDetailsService {
 		Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
 
-		User user = new User(username, userEntity.getPassword(), enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
+		User user = new User(username, userEntity.getPassword(), enabled,
+							 accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
 		return user;
 	}
 }

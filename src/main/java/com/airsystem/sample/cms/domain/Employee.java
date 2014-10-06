@@ -2,7 +2,6 @@ package com.airsystem.sample.cms.domain;
 
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -17,69 +16,61 @@ import javax.persistence.TemporalType;
 @Table(name = "tbl_employee")
 public class Employee {
 	@Id
-	private int mId;
+	private int id;
 
-	@Column(name = "name")
-	private String mName;
-
-	@Column(name = "gender")
-	private String mGender;
-
-	@Column(name = "phone")
-	private String mPhone;
-
-	@Column(name = "email")
-	private String mEmail;
+	private String name;
+	private String gender;
+	private String phone;
+	private String email;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "birthdate")
-	private Date mBirthdate;
+	private Date birthdate;
 
 	public int getId() {
-		return mId;
+		return id;
 	}
 
 	public void setId(int id) {
-		mId = id;
+		this.id = id;
 	}
 
 	public String getName() {
-		return mName;
+		return name;
 	}
 
 	public void setName(String name) {
-		mName = name;
+		this.name = name;
 	}
 
 	public String getGender() {
-		return mGender;
+		return gender;
 	}
 
 	public void setGender(String gender) {
-		mGender = gender;
+		this.gender = gender;
 	}
 
 	public String getPhone() {
-		return mPhone;
+		return phone;
 	}
 
 	public void setPhone(String phone) {
-		mPhone = phone;
+		this.phone = phone;
 	}
 
 	public String getEmail() {
-		return mEmail;
+		return email;
 	}
 
 	public void setEmail(String email) {
-		mEmail = email;
+		this.email = email;
 	}
 
 	public Date getBirthdate() {
-		return mBirthdate;
+		return birthdate;
 	}
 
 	public void setBirthdate(Date birthdate) {
-		mBirthdate = birthdate;
+		this.birthdate = birthdate;
 	}
 }

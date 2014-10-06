@@ -23,6 +23,11 @@ import com.airsystem.sample.cms.utils.SearchResult;
 public class BaseService {
 	protected final Logger LOG = Logger.getLogger(BaseService.class.getSimpleName());
 
+	private static final String SELECT = "select";
+	private static final String FROM = "from";
+	private static final String WHERE = "where";
+	private static final String COUNT = "count(*)";
+
 	@Autowired
 	protected SessionFactory sessionFactory;
 
@@ -51,13 +56,13 @@ public class BaseService {
 	public SearchResult searchHQL(String selectClause, String fromClause, Constraint constraint, 
 								  boolean isUsingPaging, int offset, int pageSize, boolean isCacheQuery) {
 		StringBuilder queryBuilder = new StringBuilder();
-		queryBuilder.append("select ").append(selectClause);
-		queryBuilder.append(" from ").append(fromClause);
+		queryBuilder.append(SELECT).append(" ").append(selectClause);
+		queryBuilder.append(" ").append(FROM).append(" ").append(fromClause);
 
 		Map<String, Object> parameters = null;
 		if (constraint != null) {
 			if (StringUtils.isNotBlank(constraint.getWhereClause())) {
-				queryBuilder.append(" where ").append(constraint.getWhereClause());
+				queryBuilder.append(" ").append(WHERE).append(" ").append(constraint.getWhereClause());
 			}
 			parameters = constraint.getParameters();
 		}
@@ -72,11 +77,12 @@ public class BaseService {
 		PagingInfo pagingInfo = null;
 		if (isUsingPaging) {
 			StringBuilder pagingBuilder = new StringBuilder();
-			pagingBuilder.append("select count(*) from ").append(fromClause);
+			pagingBuilder.append(SELECT).append(" ").append(COUNT).append(" ");
+			pagingBuilder.append(FROM).append(" ").append(fromClause);
 
 			if (constraint != null) {
 				if (StringUtils.isNotBlank(constraint.getWhereClause())) {
-					pagingBuilder = pagingBuilder.append(" where ").append(constraint.getWhereClause());
+					pagingBuilder = pagingBuilder.append(" ").append(WHERE).append(" ").append(constraint.getWhereClause());
 				}
 			}
 

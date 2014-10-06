@@ -7,7 +7,7 @@
 	<artifactId>simple-cms</artifactId>
 	<version>1.0</version>
 	<packaging>war</packaging>
-	<description>Spring Framework CMS Template</description>
+	<description>JAVA CMS Template</description>
 
 	<properties>
 		<!-- UTF-8 Encoding -->
@@ -16,6 +16,7 @@
 
 		<!-- Maven Plugin -->
 		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+		<maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
 		<maven-war-plugin.version>2.4</maven-war-plugin.version>
 
 		<!-- Log4J -->
@@ -138,6 +139,14 @@
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven-surefire-plugin.version}</version>
+				<configuration>
+					<skipTests>true</skipTests>
 				</configuration>
 			</plugin>
 			<plugin>

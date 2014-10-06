@@ -13,8 +13,8 @@ public class SearchResult {
 	public SearchResult() {
 	}
 
-	public SearchResult(List recs, PagingInfo pagingInfo) {
-		mRecords = recs;
+	public SearchResult(List records, PagingInfo pagingInfo) {
+		mRecords = records;
 		mPagingInfo = pagingInfo;
 	}
 

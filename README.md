@@ -1,8 +1,19 @@
-#Spring Framework CMS Template#
+#JAVA CMS Template#
+
+## Feature:
+* Admin Page.
+* Employee Management.
+
+## Technology Stack:
+* Apache Tomcat.
+* Spring Framework.
+* Spring Security.
+* Hibernate ORM.
+* MySQL Database.
 
 ## Step to Build:
-* Import as Maven Project
-* Modify and fix your classpath
-* Edit username and password for your Database in hibernate.cfg.xml.
-* Export application.sql file to your MySQL database schema.
-* Run as maven script.
+* Import as Maven Project.
+* Modify and Fix Your classpath.
+* Edit username and password for Your Database in hibernate.cfg.xml.
+* Export application.sql File to Your MySQL Database Schema.
+* Run as Maven Project.
