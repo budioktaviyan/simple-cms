@@ -13,11 +13,11 @@
 	<context:component-scan base-package="com.airsystem.sample.cms.controller" />
 	<mvc:annotation-driven />
 	<mvc:view-controller path="/" view-name="index" />
-	<mvc:resources mapping="/res/**" location="/WEB-INF/res/" />
+	<mvc:resources mapping="/res/**" location="/res/" />
 
 	<bean id="jspViewResolver"
 		  class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-		  p:prefix="/WEB-INF/pages/" p:suffix=".jsp" />
+		  p:prefix="/pages/" p:suffix=".jsp" />
 
 	<bean id="localeResolver"
 		  class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
