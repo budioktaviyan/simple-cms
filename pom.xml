@@ -40,6 +40,9 @@
 
 		<!-- Spring Security -->
 		<org.springframework.security.version>3.2.5.RELEASE</org.springframework.security.version>
+
+		<!-- Sitemesh -->
+		<org.sitemesh.version>3.0.0</org.sitemesh.version>
 	</properties>
 
 	<dependencies>
@@ -116,6 +119,13 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
 			<version>${org.springframework.security.version}</version>
+		</dependency>
+
+		<!-- Sitemesh -->
+		<dependency>
+			<groupId>org.sitemesh</groupId>
+			<artifactId>sitemesh</artifactId>
+			<version>${org.sitemesh.version}</version>
 		</dependency>
 	</dependencies>
 

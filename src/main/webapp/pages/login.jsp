@@ -1,17 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<title>Login &middot; CMS</title>
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
-
-<!-- CSS -->
-<link href="<c:url value="/res/css/bootstrap.min.css"/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value="/res/css/bootstrap-theme.min.css"/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value="/res/css/styles.css"/>" rel="stylesheet" type="text/css" />
+<title>Login</title>
 </head>
 <body>
 	<div class="container">
@@ -25,17 +17,13 @@
 						<img class="profile-img" src="<c:url value="/res/assets/logo.png"/>">
 					</c:if>
 					<form class="form-signin" method="post" action="<c:url value="/login"/>">
-						<input type="text" class="form-control" placeholder="Username" name="username" required autofocus>
-						<input type="password" class="form-control" placeholder="Password" name="password" required>
+						<input type="text" class="form-control" placeholder="Username" name="username" required autofocus />
+						<input type="password" class="form-control" placeholder="Password" name="password" required />
 						<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<!-- JS -->
-	<script src="<c:url value="/res/js/jquery-2.1.1.min.js"/>"></script>
-	<script src="<c:url value="/res/js/bootstrap.min.js"/>"></script>
 </body>
 </html>
