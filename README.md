@@ -10,6 +10,7 @@
 * Spring Security.
 * Hibernate ORM.
 * MySQL Database.
+* Sitemesh.
 
 ## Step to Build:
 * Import as Maven Project.
