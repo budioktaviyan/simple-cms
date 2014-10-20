@@ -1,11 +1,10 @@
 #JAVA CMS Template#
 
 ## Feature:
-* Admin Page.
+* User Management.
 * Employee Management.
 
 ## Technology Stack:
-* Apache Tomcat.
 * Spring Framework.
 * Spring Security.
 * Hibernate ORM.
