@@ -81,7 +81,7 @@
 }
 
 .sidebar-nav>.sidebar-brand a:hover {
-	color: #fff;
+	color: #D9534F;
 	background: none;
 }
 
@@ -114,4 +114,14 @@
 		position: relative;
 		margin-right: 0;
 	}
+}
+
+.vcenter * {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.btn i {
+    margin-left: 10px;
+    font-size: 20px;
 }
