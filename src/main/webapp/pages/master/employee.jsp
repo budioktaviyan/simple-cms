@@ -13,7 +13,7 @@
 				<li class="sidebar-brand"><a>Simple CMS</a></li>
 				<li class="sidebar"><a>Employee</a></li>
 				<hr class="sidebar-hr" />
-				<li><a href="#logout">Logout</a></li>
+				<li><a href="<c:url value="/logout"/>">Logout</a></li>
 			</ul>
 		</div>
 		<div id="page-content-wrapper">
@@ -28,7 +28,7 @@
 						<hr />
 					</div>
 					<div class="col-lg-6">
-						<div class="form-group">
+						<form class="form-group" method="post" action="<c:url value="/save"/>">
 							<label>Name</label>
 							<input class="form-control" placeholder="Input name" />
 							<br />
@@ -46,7 +46,13 @@
 
 							<label>Email</label>
 							<input class="form-control" placeholder="Input email address" />
-						</div>
+							<br />
+
+							<button class="btn btn-default" type="submit">
+								<span>Save</span>
+								<i class="glyphicon glyphicon-floppy-disk"></i>
+							</button>
+						</form>
 					</div>
 				</div>
 			</div>
