@@ -94,6 +94,31 @@
 	padding: 0;
 }
 
+/* Form Styles */
+.form-margin-bottom {
+	margin-bottom: 5%;
+}
+
+.lastform-margin-bottom {
+	margin-bottom: 10%;
+}
+
+.btn i {
+	vertical-align: middle;
+	display: inline-block;
+	margin-left: 10%;
+	margin-bottom: 10%;
+	font-size: 20px;
+}
+
+.btn-margin-right {
+	margin-right: 3%;
+}
+
+.align-justify {
+	text-align: justify;
+}
+
 @media ( min-width :768px) {
 	#wrapper {
 		padding-left: 250px;
@@ -114,14 +139,4 @@
 		position: relative;
 		margin-right: 0;
 	}
-}
-
-.vcenter * {
-    vertical-align: middle;
-    display: inline-block;
-}
-
-.btn i {
-    margin-left: 10px;
-    font-size: 20px;
 }
