@@ -11,7 +11,11 @@ jQuery(document).ready(function() {
 		clearText();
 	});
 
-	jQuery('.data-clickable').click(function() {
+	jQuery('#modal-toggle').click(function(e) {
+		modalClick(e);
+	});
+
+	jQuery('.data-select').click(function() {
 		clickData();
 	});
 
@@ -34,7 +38,12 @@ jQuery(document).ready(function() {
 		jQuery('select').prop('selectedIndex', 0);
 	}
 
+	function modalClick(e) {
+		e.preventDefault();
+		jQuery('#search-modal').toggleClass('toggled');
+	}
+
 	function clickData() {
-		console.log('Coming soon...');
+		console.log('Content...');
 	}
 });

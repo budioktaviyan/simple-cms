@@ -16,68 +16,73 @@
 				<li><a href="<c:url value="/logout"/>">Logout</a></li>
 			</ul>
 		</div>
+		<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+			<a href="#menu-toggle" id="menu-toggle" class="btn btn-inverse btn-lg">
+				<i class="glyphicon glyphicon-th-list white"></i>
+			</a>
+		</nav>
 		<div id="page-content-wrapper">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-lg-12">
-						<a href="#menu-toggle" id="menu-toggle" class="btn btn-primary btn-lg">
-							<span>Menu</span>
-							<i class="glyphicon glyphicon-th-list"></i>
-						</a>
+					<div class="col-lg-12 form-header-margin-top">
 						<h1>Employee Management</h1>
 						<hr />
 					</div>
 					<div class="col-lg-6">
-						<form class="form-group" method="post" action="<c:url value="/save"/>">
+						<form class="form-group" method="post" action="<c:url value="employee/save"/>">
 							<label>Name</label>
 							<div class="input-group form-margin-bottom">
 								<input class="form-control" placeholder="Input name" />
-									<span class="input-group-addon">
-									<i id="form-search" class="glyphicon glyphicon-search"
-									   data-toggle="modal" data-target="#search-modal"
-									   data-backdrop="static" data-keyboard="false">
-									</i>
-									</span>
+								<a href="#modal-toggle" id="modal-toggle" class="input-group-addon">
+									<i class="glyphicon glyphicon-search" data-toggle="modal" data-target="#search-modal" data-backdrop="static"></i>
+								</a>
 
-									<div id="search-modal" class="modal" role="dialog" tabindex="-1">
-										<div class="modal-dialog">
-											<div class="modal-content">
-												<div class="modal-header">
-													<a class="close" role="button" data-dismiss="modal">&times;</a>
-													<h3 class="modal-title align-justify">Employee Data</h3>
-												</div>
-												<div class="modal-body">
-													<table class="table table-striped align-justify">
-														<thead>
-															<tr>
-																<th>Name</th>
-																<th>Gender</th>
-																<th>Phone Number</th>
-																<th>Email</th>
-															</tr>
-														</thead>
-														<tbody class="data-clickable">
-															<tr>
-																<td>Budi</td>
-																<td>Male</td>
-																<td>08123456789</td>
-																<td>budi@mail.com</td>
-															</tr>
-															<tr>
-																<td>Oktaviyan</td>
-																<td>Female</td>
-																<td>02123456789</td>
-																<td>oktaviyan@mail.com</td>
-															</tr>
-														</tbody>
-													</table>
-												</div>
-												<div class="modal-footer">
-													<a class="btn btn-primary" role="button" data-dismiss="modal">Close</a>
-												</div>
+								<div id="search-modal" class="modal" role="dialog" tabindex="-1">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<a class="close" role="button" data-dismiss="modal">&times;</a>
+												<h3 class="modal-title align-justify">Employee Data</h3>
+											</div>
+											<div class="modal-body">
+												<table class="table table-bordered table-hover align-justify">
+													<thead>
+														<tr>
+															<th>Name</th>
+															<th>Gender</th>
+															<th>Phone Number</th>
+															<th>Email</th>
+															<th>Action</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>Budi</td>
+															<td>Male</td>
+															<td>08123456789</td>
+															<td>budi@mail.com</td>
+															<td>
+																<a class="btn btn-primary data-select" role="button" data-dismiss="modal">Select</a>
+															</td>
+														</tr>
+														<tr>
+															<td>Oktaviyan</td>
+															<td>Female</td>
+															<td>02123456789</td>
+															<td>oktaviyan@mail.com</td>
+															<td>
+																<a class="btn btn-primary data-select" role="button" data-dismiss="modal">Select</a>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+											<div class="modal-footer">
+												<a class="btn btn-primary" role="button" data-dismiss="modal">Close</a>
 											</div>
 										</div>
 									</div>
+								</div>
 							</div>
 
 							<label>Gender</label>
@@ -96,6 +101,7 @@
 								<span>Save</span>
 								<i class="glyphicon glyphicon-floppy-disk"></i>
 							</a>
+
 							<a id="form-reset" class="btn btn-warning" role="button">
 								<span>Reset</span>
 								<i class="glyphicon glyphicon-refresh"></i>

@@ -95,6 +95,10 @@
 }
 
 /* Form Styles */
+.form-header-margin-top {
+	margin-top: -3%;
+}
+
 .form-margin-bottom {
 	margin-bottom: 5%;
 }
@@ -117,6 +121,10 @@
 
 .align-justify {
 	text-align: justify;
+}
+
+.white {
+	color: #FFFFFF;
 }
 
 @media ( min-width :768px) {
