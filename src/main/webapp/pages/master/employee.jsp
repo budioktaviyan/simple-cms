@@ -112,7 +112,7 @@
 			</div>
 		</div>
 	</div>
-	<script src="<c:url value="/res/js/jquery.numeric.js"/>"></script>
+	<script src="<c:url value="/res/js/jquery.numeric.min.js"/>"></script>
 	<script src="<c:url value="/res/js/master.js"/>"></script>
 	<script src="<c:url value="/res/js/number.js"/>"></script>
 </body>
