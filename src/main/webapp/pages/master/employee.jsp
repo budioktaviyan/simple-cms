@@ -4,6 +4,7 @@
 <html>
 <head>
 <title>Employee Data</title>
+<link href="<c:url value="/res/css/plugins/jquery-ui.min.css"/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value="/res/css/master.css"/>" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -11,8 +12,8 @@
 		<div id="sidebar-wrapper">
 			<ul class="sidebar-nav">
 				<li class="sidebar-brand"><a>Simple CMS</a></li>
-				<li class="sidebar"><a>Employee</a></li>
-				<hr class="sidebar-hr" />
+                <li class="sidebar"><a>Employee</a></li>
+                <hr class="sidebar-hr" />
 				<li><a href="<c:url value="/logout"/>">Logout</a></li>
 			</ul>
 		</div>
@@ -33,56 +34,16 @@
 							<label>Name</label>
 							<div class="input-group form-margin-bottom">
 								<input class="form-control" placeholder="Input name" />
-								<a href="#modal-toggle" id="modal-toggle" class="input-group-addon">
-									<i class="glyphicon glyphicon-search" data-toggle="modal" data-target="#search-modal" data-backdrop="static"></i>
-								</a>
+								<a href="<c:url value="/master/dialog"/>" class="input-group-addon"
+								   data-toggle="modal" data-target="#search-modal" data-backdrop="false">
+                                    <i class="glyphicon glyphicon-search"></i>
+                                </a>
 
-								<div id="search-modal" class="modal" role="dialog" tabindex="-1">
-									<div class="modal-dialog">
-										<div class="modal-content">
-											<div class="modal-header">
-												<a class="close" role="button" data-dismiss="modal">&times;</a>
-												<h3 class="modal-title align-justify">Employee Data</h3>
-											</div>
-											<div class="modal-body">
-												<table class="table table-bordered table-hover align-justify">
-													<thead>
-														<tr>
-															<th>Name</th>
-															<th>Gender</th>
-															<th>Phone Number</th>
-															<th>Email</th>
-															<th>Action</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<td>Budi</td>
-															<td>Male</td>
-															<td>08123456789</td>
-															<td>budi@mail.com</td>
-															<td>
-																<a class="btn btn-primary data-select" role="button" data-dismiss="modal">Select</a>
-															</td>
-														</tr>
-														<tr>
-															<td>Oktaviyan</td>
-															<td>Female</td>
-															<td>02123456789</td>
-															<td>oktaviyan@mail.com</td>
-															<td>
-																<a class="btn btn-primary data-select" role="button" data-dismiss="modal">Select</a>
-															</td>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-											<div class="modal-footer">
-												<a class="btn btn-primary" role="button" data-dismiss="modal">Close</a>
-											</div>
-										</div>
-									</div>
-								</div>
+                                <div id="search-modal" class="modal" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content"></div>
+                                    </div>
+                                </div>
 							</div>
 
 							<label>Gender</label>
@@ -112,8 +73,10 @@
 			</div>
 		</div>
 	</div>
-	<script src="<c:url value="/res/js/jquery.numeric.min.js"/>"></script>
-	<script src="<c:url value="/res/js/master.js"/>"></script>
-	<script src="<c:url value="/res/js/number.js"/>"></script>
+
+	<script src="<c:url value="/res/js/plugins/jquery-ui.min.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/res/js/plugins/jquery.numeric.min.js"/>" type="text/javascript"></script>
+    <script src="<c:url value="/res/js/master.js"/>"></script>
+    <script src="<c:url value="/res/js/dialog.js"/>"></script>
 </body>
 </html>
