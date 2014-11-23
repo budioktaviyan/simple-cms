@@ -1,25 +1,29 @@
-jQuery(document).ready(function() {
-	jQuery('#menu-toggle').click(function(e) {
-		e.preventDefault();
-		jQuery('#wrapper').toggleClass('toggled');
+$(document).ready(function() {
+	$('#menu-toggle').click(function(e) {
+		toggleObject(e, '#wrapper');
 	});
 
-	jQuery('input').keyup(function() {
-		if (jQuery('input').val() != '') {
-			jQuery('#form-save').removeAttr('disabled');
-		} else {
-			jQuery('#form-save').attr('disabled', 'disabled');
-		}
+	$('input').keyup(function() {
+		firstInput();
 	});
 
-	jQuery('#form-reset').click(function() {
-		jQuery('#form-save').attr('disabled', 'disabled');
-		jQuery('input').val('');
-		jQuery('select').prop('selectedIndex', 0);
+	$('#phone').numeric({
+		allowPlus : true,
+		allowMinus : false,
+		allowThouSep : false,
+		allowDecSep : false
 	});
 
-	jQuery('.positive-integer').numeric({
-		decimal : false,
-		negative : false
+	$('#form-reset').click(function() {
+		resetForm();
 	});
+
+	$('.modal').each(function() {
+		dialogDragable('.modal')
+	});
+});
+
+$('#modal-toggle').click(function(e) {
+	toggleObject(e, '#search-modal');
+	initialDialog('#employee-data', 'Budi Oktaviyan');
 });

@@ -12,8 +12,8 @@
 		<div id="sidebar-wrapper">
 			<ul class="sidebar-nav">
 				<li class="sidebar-brand"><a>Simple CMS</a></li>
-                <li class="sidebar"><a>Employee</a></li>
-                <hr class="sidebar-hr" />
+				<li class="sidebar"><a>Employee</a></li>
+				<hr class="sidebar-hr" />
 				<li><a href="<c:url value="/logout"/>">Logout</a></li>
 			</ul>
 		</div>
@@ -34,16 +34,25 @@
 							<label>Name</label>
 							<div class="input-group form-margin-bottom">
 								<input class="form-control" placeholder="Input name" />
-								<a href="<c:url value="/master/dialog"/>" class="input-group-addon"
-								   data-toggle="modal" data-target="#search-modal" data-backdrop="false">
-                                    <i class="glyphicon glyphicon-search"></i>
-                                </a>
+									<a href="#modal-toggle" id="modal-toggle" class="input-group-addon" onfocus="this.blur()"
+									   data-toggle="modal" data-target="#search-modal" data-backdrop="false">
+									   <i class="glyphicon glyphicon-search"></i>
+									</a>
 
-                                <div id="search-modal" class="modal" tabindex="-1" role="dialog">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content"></div>
-                                    </div>
-                                </div>
+								<div id="search-modal" class="modal" role="dialog" tabindex="-1">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<a class="close" role="button" data-dismiss="modal">&times;</a>
+												<h3 class="modal-title align-justify">Employee Data</h3>
+											</div>
+											<div id="employee-data" class="modal-body"></div>
+											<div class="modal-footer">
+												<a class="btn btn-primary" role="button" data-dismiss="modal">Close</a>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 
 							<label>Gender</label>
@@ -53,7 +62,7 @@
 							</select>
 
 							<label>Phone Number</label>
-							<input class="form-control form-margin-bottom positive-integer" placeholder="Input phone number" maxlength="12" />
+							<input id="phone" class="form-control form-margin-bottom" placeholder="Input phone number" maxlength="15" />
 
 							<label>Email</label>
 							<input class="form-control lastform-margin-bottom" placeholder="Input email address" />
@@ -75,8 +84,10 @@
 	</div>
 
 	<script src="<c:url value="/res/js/plugins/jquery-ui.min.js"/>" type="text/javascript"></script>
-	<script src="<c:url value="/res/js/plugins/jquery.numeric.min.js"/>" type="text/javascript"></script>
-    <script src="<c:url value="/res/js/master.js"/>"></script>
-    <script src="<c:url value="/res/js/dialog.js"/>"></script>
+	<script src="<c:url value="/res/js/plugins/jquery.alphanum.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/res/js/config.js"/>"></script>
+	<script src="<c:url value="/res/js/constant.js"/>"></script>
+	<script src="<c:url value="/res/js/common.js"/>"></script>
+	<script src="<c:url value="/res/js/master.js"/>"></script>
 </body>
 </html>

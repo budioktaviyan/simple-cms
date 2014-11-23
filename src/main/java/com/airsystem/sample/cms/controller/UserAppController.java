@@ -29,7 +29,6 @@ public class UserAppController {
 
 	private static final String URI_LOGIN = "login";
 	private static final String URI_EMPLOYEE = "master/employee";
-	private static final String URI_EMPLOYEE_DATA = "master/dialog";
 	private static final String URI_REDIRECT_LOGIN = "redirect:/login";
 	private static final String URI_REDIRECT_EMPLOYEE = "redirect:/master/employee";
 
@@ -68,11 +67,6 @@ public class UserAppController {
 	@RequestMapping(value = "/master/employee", method = RequestMethod.GET)
 	public String openEmployee() {
 		return URI_EMPLOYEE;
-	}
-
-	@RequestMapping(value = "/master/dialog", method = RequestMethod.GET)
-	public String openEmployeeData() {
-		return URI_EMPLOYEE_DATA;
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
