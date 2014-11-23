@@ -61,11 +61,19 @@
 								<option>Female</option>
 							</select>
 
-							<label>Phone Number</label>
-							<input id="phone" class="form-control form-margin-bottom" placeholder="Input phone number" maxlength="15" />
+                            <label>Phone Number</label>
+                            <div class="input-group form-margin-bottom">
+                                <div class="input-group-addon">
+                                    <i class="glyphicon glyphicon-earphone"></i>
+                                </div>
+                                <input id="phone" class="form-control" type="tel" placeholder="Input phone number" maxlength="15" />
+                            </div>
 
-							<label>Email</label>
-							<input id="email" class="form-control lastform-margin-bottom" placeholder="Input email address" />
+                            <label>Email</label>
+                            <div class="input-group lastform-margin-bottom">
+                                <div class="input-group-addon">@</div>
+                                <input id="email" class="form-control" type="email" placeholder="Input email address" />
+                            </div>
 
 							<a id="form-save" class="btn btn-success btn-margin-right btn-form" role="button" disabled="disabled">
 								<span>Save</span>
