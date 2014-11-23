@@ -5,16 +5,21 @@ function toggleObject(e, selector) {
 
 function firstInput() {
 	if ($('input').val() != '') {
-		$('#form-save').removeAttr('disabled');
+		$('.btn-form').removeAttr(DISABLED);
 	} else {
-		$('#form-save').attr('disabled', 'disabled');
+		$('.btn-form').attr(DISABLED, DISABLED);
 	}
 }
 
 function resetForm() {
-	$('#form-save').attr(DISABLED, DISABLED);
+	$('.btn-form').attr(DISABLED, DISABLED);
 	$('input').val('');
 	$('select').prop('selectedIndex', EMPTY);
+}
+
+function resetButton() {
+	$('#form-save').show();
+	$('#form-update').hide();
 }
 
 function initialDialog(selector, data) {
@@ -33,13 +38,13 @@ function initialDialog(selector, data) {
 
 	for (var i = 0; i < 3; i++) {
 		content += '<tr>' +
-						'<td>' + data + '</td>' +
-						'<td class="text-center">Male</td>' +
-						'<td>+628567646893</td>' +
-						'<td>budi.oktaviyan@icloud.com</td>' +
+						'<td id="name-row">' + data + '</td>' +
+						'<td id="gender-row" class="text-center">Female</td>' +
+						'<td id="phone-row">+628567646893</td>' +
+						'<td id="email-row">budi.oktaviyan@icloud.com</td>' +
 						'<td>' +
-							'<a class="btn btn-sm btn-warning btn-block" role="button" data-dismiss="modal">Edit</a>' +
-							'<a class="btn btn-sm btn-danger btn-block" role="button" data-dismiss="modal">Delete</a>' +
+							'<a id="employee-edit" class="btn btn-sm btn-warning btn-block" role="button" data-dismiss="modal">Edit</a>' +
+							'<a id="employee-delete" class="btn btn-sm btn-danger btn-block" role="button" data-dismiss="modal">Delete</a>' +
 						'</td>' +
 				   '</tr>';
 	}
@@ -52,4 +57,26 @@ function dialogDragable(selector) {
 	$(selector).draggable({
 		handle : '.modal-dialog'
 	});
+}
+
+function updateData() {
+	var name = $('#name-row').text();
+	var gender = $('#gender-row').text();
+	var phone = $('#phone-row').text();
+	var email = $('#email-row').text();
+
+	$('#name').val(name);
+	$('#gender').val(gender);
+	$('#phone').val(phone);
+	$('#email').val(email);
+}
+
+function updateButton() {
+	$('#form-save').hide();
+	$('#form-update').removeAttr(DISABLED);
+	$('#form-update').show();
+}
+
+function deleteData() {
+	alert('Delete employee');
 }

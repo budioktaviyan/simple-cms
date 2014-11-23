@@ -3,10 +3,6 @@ $(document).ready(function() {
 		toggleObject(e, '#wrapper');
 	});
 
-	$('input').keyup(function() {
-		firstInput();
-	});
-
 	$('#phone').numeric({
 		allowPlus : true,
 		allowMinus : false,
@@ -14,16 +10,32 @@ $(document).ready(function() {
 		allowDecSep : false
 	});
 
-	$('#form-reset').click(function() {
-		resetForm();
-	});
+	resetButton();
 
 	$('.modal').each(function() {
 		dialogDragable('.modal')
 	});
 });
 
+$('input').keyup(function() {
+	firstInput();
+});
+
+$('#form-reset').click(function() {
+	resetForm();
+	resetButton();
+});
+
 $('#modal-toggle').click(function(e) {
 	toggleObject(e, '#search-modal');
 	initialDialog('#employee-data', 'Budi Oktaviyan');
+});
+
+$(document).on('click', '#employee-edit', function() {
+	updateData();
+	updateButton();
+});
+
+$(document).on('click', '#employee-delete', function() {
+	deleteData();
 });

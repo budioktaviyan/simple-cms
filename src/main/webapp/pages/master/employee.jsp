@@ -30,14 +30,14 @@
 						<hr />
 					</div>
 					<div class="col-lg-6">
-						<form class="form-group" method="post" action="<c:url value="employee/save"/>">
+						<form class="form-group" method="post" action="<c:url value="employee/saveorupdate"/>">
 							<label>Name</label>
 							<div class="input-group form-margin-bottom">
-								<input class="form-control" placeholder="Input name" />
-									<a href="#modal-toggle" id="modal-toggle" class="input-group-addon" onfocus="this.blur()"
-									   data-toggle="modal" data-target="#search-modal" data-backdrop="false">
-									   <i class="glyphicon glyphicon-search"></i>
-									</a>
+								<input id="name" class="form-control" placeholder="Input name" />
+								<a href="#modal-toggle" id="modal-toggle" class="input-group-addon" onfocus="this.blur()"
+								   data-toggle="modal" data-target="#search-modal" data-backdrop="false">
+								   <i class="glyphicon glyphicon-search"></i>
+								</a>
 
 								<div id="search-modal" class="modal" role="dialog" tabindex="-1">
 									<div class="modal-dialog">
@@ -56,7 +56,7 @@
 							</div>
 
 							<label>Gender</label>
-							<select class="form-control form-margin-bottom">
+							<select id="gender" class="form-control form-margin-bottom">
 								<option>Male</option>
 								<option>Female</option>
 							</select>
@@ -65,13 +65,16 @@
 							<input id="phone" class="form-control form-margin-bottom" placeholder="Input phone number" maxlength="15" />
 
 							<label>Email</label>
-							<input class="form-control lastform-margin-bottom" placeholder="Input email address" />
+							<input id="email" class="form-control lastform-margin-bottom" placeholder="Input email address" />
 
-							<a id="form-save" class="btn btn-success btn-margin-right" role="button" disabled="disabled">
+							<a id="form-save" class="btn btn-success btn-margin-right btn-form" role="button" disabled="disabled">
 								<span>Save</span>
 								<i class="glyphicon glyphicon-floppy-disk"></i>
 							</a>
-
+							<a id="form-update" class="btn btn-success btn-margin-right btn-form" role="button">
+								<span>Update</span>
+								<i class="glyphicon glyphicon-pencil"></i>
+							</a>
 							<a id="form-reset" class="btn btn-warning" role="button">
 								<span>Reset</span>
 								<i class="glyphicon glyphicon-refresh"></i>
