@@ -1,20 +1,20 @@
 function toggleObject(e, selector) {
 	e.preventDefault();
-	$(selector).toggleClass(TOGGLED);
+	$(selector).toggleClass('toggled');
 }
 
 function firstInput() {
 	if ($('input').val() != '') {
-		$('.btn-form').removeAttr(DISABLED);
+		$('.btn-form').removeAttr('disabled');
 	} else {
-		$('.btn-form').attr(DISABLED, DISABLED);
+		$('.btn-form').attr('disabled', 'disabled');
 	}
 }
 
 function resetForm() {
-	$('.btn-form').attr(DISABLED, DISABLED);
+	$('.btn-form').attr('disabled', 'disabled');
 	$('input').val('');
-	$('select').prop('selectedIndex', EMPTY);
+	$('select').prop('selectedIndex', 0);
 }
 
 function resetButton() {
@@ -73,7 +73,7 @@ function updateData() {
 
 function updateButton() {
 	$('#form-save').hide();
-	$('#form-update').removeAttr(DISABLED);
+	$('#form-update').removeAttr('disabled');
 	$('#form-update').show();
 }
 

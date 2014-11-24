@@ -96,8 +96,6 @@
 
 	<script src="<c:url value="/res/js/plugins/jquery-ui.min.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/plugins/jquery.alphanum.js"/>" type="text/javascript"></script>
-	<script src="<c:url value="/res/js/config.js"/>"></script>
-	<script src="<c:url value="/res/js/constant.js"/>"></script>
 	<script src="<c:url value="/res/js/common.js"/>"></script>
 	<script src="<c:url value="/res/js/master.js"/>"></script>
 </body>

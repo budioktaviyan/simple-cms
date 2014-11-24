@@ -1,1 +1,0 @@
-var EMPTY = 0;
