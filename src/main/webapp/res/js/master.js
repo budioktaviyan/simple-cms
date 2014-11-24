@@ -21,6 +21,10 @@ $('input').keyup(function() {
 	firstInput();
 });
 
+$('#form-save').click(function() {
+	saveData('#alert-holder');
+});
+
 $('#form-reset').click(function() {
 	resetForm();
 	resetButton();

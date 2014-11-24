@@ -107,6 +107,13 @@
 	margin-bottom: 10%;
 }
 
+.form-notify {
+	position: fixed;
+	top: 10%;
+	width: 50%;
+	z-index: 3000;
+}
+
 .btn i {
 	vertical-align: middle;
 	display: inline-block;
@@ -127,7 +134,7 @@
 	color: #FFFFFF;
 }
 
-@media ( min-width :768px) {
+@media ( min-width : 768px) {
 	#wrapper {
 		padding-left: 250px;
 	}

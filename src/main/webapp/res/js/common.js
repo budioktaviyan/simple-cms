@@ -11,6 +11,20 @@ function firstInput() {
 	}
 }
 
+function saveData(selector) {
+	var content = '<div class="alert alert-success form-notify">' +
+						'<a href="#" class="close" data-dismiss="alert">&times;</a>' +
+						'<i class="glyphicon glyphicon-ok"></i> Data successfully saved!' +
+				  '</div>';
+	$(selector).html(content);
+	$(selector).fadeIn('slow');
+	resetForm();
+
+	window.setTimeout(function() {
+		$(selector).fadeTo('slow', 1).fadeOut('slow');
+	}, 1000);
+}
+
 function resetForm() {
 	$('.btn-form').attr('disabled', 'disabled');
 	$('input').val('');

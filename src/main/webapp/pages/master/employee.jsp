@@ -30,6 +30,7 @@
 						<hr />
 					</div>
 					<div class="col-lg-6">
+						<div id="alert-holder"></div>
 						<form class="form-group" method="post" action="<c:url value="employee/saveorupdate"/>">
 							<label>Name</label>
 							<div class="input-group form-margin-bottom">
