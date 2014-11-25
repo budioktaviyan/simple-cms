@@ -12,17 +12,36 @@ function firstInput() {
 }
 
 function saveData() {
-	var messages = '<i class="glyphicon glyphicon-ok" />&nbsp; Data Successfully Saved!';
-	var saveSuccess = $.simplyToast(messages, type = 'success', {
-		'offset' : {
-			'from' : 'top',
-			'amount' : 60
+	var messages;
+	var messageType;
+	var request = $.ajax({
+		url : path + '/employee/saveorupdate',
+		type : 'POST',
+		data : {
+			name : $('#name').val(),
+			gender : $('#gender').val(),
+			phone : $('#phone').val(),
+			email : $('#email').val()
 		},
-		'align' : 'center',
-		'minWidth' : 500,
-		'delay' : '2000',
+		dataType : 'text'
 	});
 
+	request.done(function(message) {
+		if (message == 'success saveorupdate') {
+			messages = '<i class="glyphicon glyphicon-ok" />&nbsp; Data Successfully Saved!';
+			messageType = 'success';
+			return true;
+		} else {
+			return false;
+		}
+	});
+
+	request.fail(function(jqXHR, textStatus) {
+		messages = '<i class="glyphicon glyphicon-remove" />&nbsp; Failed Save Data!\n' + textStatus;
+		messageType = 'danger';
+	});
+
+	toastAlert(messages, messageType);
 	resetForm();
 }
 
@@ -94,4 +113,16 @@ function updateButton() {
 
 function deleteData() {
 	alert('Delete employee');
+}
+
+function toastAlert(messages, messageType) {
+	$.simplyToast(messages, type = messageType, {
+		'offset' : {
+			'from' : 'top',
+			'amount' : 60
+		},
+		'align' : 'center',
+		'minWidth' : 500,
+		'delay' : '2000',
+	});
 }

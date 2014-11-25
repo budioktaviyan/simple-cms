@@ -1,3 +1,5 @@
+var path = '${url_path}';
+
 $(document).ready(function() {
 	$('#menu-toggle').click(function(e) {
 		toggleObject(e, '#wrapper');
