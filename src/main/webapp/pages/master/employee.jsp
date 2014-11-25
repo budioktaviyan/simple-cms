@@ -30,7 +30,6 @@
 						<hr />
 					</div>
 					<div class="col-lg-6">
-						<div id="alert-holder"></div>
 						<form class="form-group" method="post" action="<c:url value="employee/saveorupdate"/>">
 							<label>Name</label>
 							<div class="input-group form-margin-bottom">
@@ -96,8 +95,9 @@
 	</div>
 
 	<script src="<c:url value="/res/js/plugins/jquery-ui.min.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/res/js/plugins/simply-toast.min.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/plugins/jquery.alphanum.js"/>" type="text/javascript"></script>
-	<script src="<c:url value="/res/js/common.js"/>"></script>
-	<script src="<c:url value="/res/js/master.js"/>"></script>
+	<script src="<c:url value="/res/js/common.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/res/js/master.js"/>" type="text/javascript"></script>
 </body>
 </html>

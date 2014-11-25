@@ -22,7 +22,7 @@ $('input').keyup(function() {
 });
 
 $('#form-save').click(function() {
-	saveData('#alert-holder');
+	saveData();
 });
 
 $('#form-reset').click(function() {

@@ -77,11 +77,11 @@
 }
 
 .sidebar-nav>.sidebar-brand a {
-	color: #999999;
+	color: #D9534F;
 }
 
 .sidebar-nav>.sidebar-brand a:hover {
-	color: #D9534F;
+	color: #FFFFFF;
 	background: none;
 }
 
@@ -105,13 +105,6 @@
 
 .lastform-margin-bottom {
 	margin-bottom: 10%;
-}
-
-.form-notify {
-	position: fixed;
-	top: 10%;
-	width: 50%;
-	z-index: 3000;
 }
 
 .btn i {

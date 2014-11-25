@@ -11,18 +11,19 @@ function firstInput() {
 	}
 }
 
-function saveData(selector) {
-	var content = '<div class="alert alert-success form-notify">' +
-						'<a href="#" class="close" data-dismiss="alert">&times;</a>' +
-						'<i class="glyphicon glyphicon-ok"></i> Data successfully saved!' +
-				  '</div>';
-	$(selector).html(content);
-	$(selector).fadeIn('slow');
-	resetForm();
+function saveData() {
+	var messages = '<i class="glyphicon glyphicon-ok" />&nbsp; Data Successfully Saved!';
+	var saveSuccess = $.simplyToast(messages, type = 'success', {
+		'offset' : {
+			'from' : 'top',
+			'amount' : 60
+		},
+		'align' : 'center',
+		'minWidth' : 500,
+		'delay' : '2000',
+	});
 
-	window.setTimeout(function() {
-		$(selector).fadeTo('slow', 1).fadeOut('slow');
-	}, 1000);
+	resetForm();
 }
 
 function resetForm() {
