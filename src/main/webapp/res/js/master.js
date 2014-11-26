@@ -1,5 +1,3 @@
-var path = '${url_path}';
-
 $(document).ready(function() {
 	$('#menu-toggle').click(function(e) {
 		toggleObject(e, '#wrapper');
@@ -23,8 +21,8 @@ $('input').keyup(function() {
 	firstInput();
 });
 
-$('#form-save').click(function() {
-	saveData();
+$('#form-save').click(function(e) {
+	saveData(e);
 });
 
 $('#form-reset').click(function() {

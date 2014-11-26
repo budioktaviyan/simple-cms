@@ -31,10 +31,10 @@
 						<hr />
 					</div>
 					<div class="col-lg-6">
-						<form class="form-group" method="post" action="<c:url value="employee/saveorupdate"/>">
+						<form class="form-group" method="post" action="<c:url value="/master/employee/saveorupdate"/>">
 							<label>Name</label>
 							<div class="input-group form-margin-bottom">
-								<input id="name" class="form-control" name="name" placeholder="Input name" />
+								<input id="name" class="form-control" placeholder="Input name" />
 								<a href="#modal-toggle" id="modal-toggle" class="input-group-addon" onfocus="this.blur()"
 								   data-toggle="modal" data-target="#search-modal" data-backdrop="false">
 								   <i class="glyphicon glyphicon-search"></i>
@@ -57,7 +57,7 @@
 							</div>
 
 							<label>Gender</label>
-							<select id="gender" class="form-control form-margin-bottom" name="gender">
+							<select id="gender" class="form-control form-margin-bottom">
 								<option>Male</option>
 								<option>Female</option>
 							</select>
@@ -67,13 +67,13 @@
                                 <div class="input-group-addon">
                                     <i class="glyphicon glyphicon-earphone"></i>
                                 </div>
-                                <input id="phone" class="form-control" type="tel" name="phone" placeholder="Input phone number" maxlength="15" />
+                                <input id="phone" class="form-control" type="tel" placeholder="Input phone number" maxlength="15" />
                             </div>
 
                             <label>Email</label>
                             <div class="input-group lastform-margin-bottom">
                                 <div class="input-group-addon">@</div>
-                                <input id="email" class="form-control" type="email" name="email" placeholder="Input email address" />
+                                <input id="email" class="form-control" type="email" placeholder="Input email address" />
                             </div>
 
 							<a id="form-save" class="btn btn-success btn-margin-right btn-form" role="button" disabled="disabled">
@@ -100,5 +100,8 @@
 	<script src="<c:url value="/res/js/plugins/jquery.alphanum.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/common.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/master.js"/>" type="text/javascript"></script>
+	<script>
+		var path = '${url_path}';
+	</script>
 </body>
 </html>

@@ -11,37 +11,38 @@ function firstInput() {
 	}
 }
 
-function saveData() {
-	var messages;
-	var messageType;
-	var request = $.ajax({
-		url : path + '/employee/saveorupdate',
+function saveData(e) {
+	e.preventDefault();
+
+	var message = '<i class="glyphicon glyphicon-ok" />&nbsp; Data Successfully Saved!';
+	var messageType = 'success';
+	var name = $('#name').val();
+	var gender = $('#gender').val();
+	var phone = $('#phone').val();
+	var email = $('#email').val();
+	var jsonObject = {
+		'name' : name,
+		'gender' : gender,
+		'birthdate' : '1987-10-04',
+		'phone' : phone,
+		'email' : email
+	};
+
+	$.ajax({
 		type : 'POST',
-		data : {
-			name : $('#name').val(),
-			gender : $('#gender').val(),
-			phone : $('#phone').val(),
-			email : $('#email').val()
-		},
-		dataType : 'text'
+		contentType : 'application/json; charset=utf-8',
+		dataType : 'json',
+		url : path + '/master/employee/saveorupdate',
+		data : JSON.stringify(jsonObject),
+//		success : function(response) {
+//			alert(response);
+//		},
+//		error : function(jqXHR, textStatus, errorThrown) {
+//			alert(textStatus + ' ' + errorThrown);
+//		}
 	});
 
-	request.done(function(message) {
-		if (message == 'success saveorupdate') {
-			messages = '<i class="glyphicon glyphicon-ok" />&nbsp; Data Successfully Saved!';
-			messageType = 'success';
-			return true;
-		} else {
-			return false;
-		}
-	});
-
-	request.fail(function(jqXHR, textStatus) {
-		messages = '<i class="glyphicon glyphicon-remove" />&nbsp; Failed Save Data!\n' + textStatus;
-		messageType = 'danger';
-	});
-
-	toastAlert(messages, messageType);
+	toastAlert(message, messageType);
 	resetForm();
 }
 
