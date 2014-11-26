@@ -1,5 +1,8 @@
 package com.airsystem.sample.cms.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,17 +22,24 @@ import com.airsystem.sample.cms.service.IDatabaseService;
 public class EmployeeController {
 	private static final Logger LOG = Logger.getLogger(EmployeeController.class.getSimpleName());
 
+	private static final String RESPONSE = "response";
+	private static final String SUCCESS = "success";
+	private static final String FAIL = "fail";
+
 	@Autowired
 	private IDatabaseService databaseService;
 
 	@RequestMapping(value = "/master/employee/saveorupdate", method = RequestMethod.POST)
-	public @ResponseBody String saveorupdate(@RequestBody Employee employee) {
+	public @ResponseBody Map<String, String> saveorupdate(@RequestBody Employee employee) {
+		Map<String, String> response = new HashMap<String, String>();
 		try {
 			databaseService.saveorUpdateEmployee(employee);
-			return "success";
+			response.put(RESPONSE, SUCCESS);
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
-			return "error";
+			response.put(RESPONSE, FAIL);
 		}
+
+		return response;
 	}
 }

@@ -22,7 +22,8 @@ $('input').keyup(function() {
 });
 
 $('#form-save').click(function(e) {
-	saveData(e);
+	e.preventDefault();
+	saveData();
 });
 
 $('#form-reset').click(function() {
