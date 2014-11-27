@@ -31,15 +31,15 @@ public class EmployeeController {
 
 	@RequestMapping(value = "/master/employee/saveorupdate", method = RequestMethod.POST)
 	public @ResponseBody Map<String, String> saveorupdate(@RequestBody Employee employee) {
-		Map<String, String> response = new HashMap<String, String>();
+		Map<String, String> jsonObject = new HashMap<String, String>();
 		try {
 			databaseService.saveorUpdateEmployee(employee);
-			response.put(RESPONSE, SUCCESS);
+			jsonObject.put(RESPONSE, SUCCESS);
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
-			response.put(RESPONSE, FAIL);
+			jsonObject.put(RESPONSE, FAIL);
 		}
 
-		return response;
+		return jsonObject;
 	}
 }

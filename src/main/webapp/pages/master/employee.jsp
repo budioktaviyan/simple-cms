@@ -62,6 +62,14 @@
 								<option>Female</option>
 							</select>
 
+							<label>Birthdate</label>
+                            <div class="input-group date form-margin-bottom">
+                                <div class="input-group-addon">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </div>
+                                <input id="birthdate" class="form-control" type="date" min="1970-1-1" max="2099-12-31" />
+                            </div>
+
                             <label>Phone Number</label>
                             <div class="input-group form-margin-bottom">
                                 <div class="input-group-addon">

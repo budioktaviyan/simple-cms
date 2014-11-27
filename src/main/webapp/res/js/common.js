@@ -17,37 +17,73 @@ function saveData() {
 	var jsonObject = {
 		'name' : $('#name').val(),
 		'gender' : $('#gender').val(),
-		'birthdate' : '1987-10-04',
+		'birthdate' : $('#birthdate').val(),
 		'phone' : $('#phone').val(),
 		'email' : $('#email').val()
 	};
 
-	$.ajax({
-		url : path + '/master/employee/saveorupdate',
+	var request = $.ajax({
 		type : 'POST',
-		contentType : 'application/json; charset=utf-8',
+		url : path + '/master/employee/saveorupdate',
+		contentType : 'application/json; charset=UTF-8',
 		data : JSON.stringify(jsonObject),
 		dataType : 'json',
-		success : function(data) {
-			switch (data.response) {
-			case 'success': {
-				message = '<i class="glyphicon glyphicon-ok" />&nbsp; Data Successfully Saved!';
-				messageType = 'success';
-				break;
-			}
-			case 'fail': {
-				message = '<i class="glyphicon glyphicon-remove" />&nbsp; Failed Saved Data!';
-				messageType = 'danger';
-				break;
-			}
-			}
-
+		beforeSend : function(Xhr) {
+			message = '<i class="glyphicon glyphicon-info-sign" />&nbsp; Saving data...';
+			messageType = 'info';
 			toastAlert(message, messageType);
-			resetForm();
-		},
-		error : function(jqXHR, textStatus, errorThrown) {
-			console.log(textStatus + '\n' + errorThrown);
 		}
+	});
+
+	request.success(function(data) {
+		switch (data.response) {
+		case 'success': {
+			message = '<i class="glyphicon glyphicon-ok" />&nbsp; Data Successfully Saved!';
+			messageType = 'success';
+			break;
+		}
+		case 'fail': {
+			message = '<i class="glyphicon glyphicon-remove" />&nbsp; Failed Saved Data!';
+			messageType = 'danger';
+			break;
+		}
+		}
+
+		toastAlert(message, messageType);
+		resetForm();
+	});
+
+	request.error(function(textStatus, errorThrown) {
+		console.log(textStatus + '\n' + errorThrown);
+	});
+}
+
+function updateData() {
+	var name = $('#name-row').text();
+	var gender = $('#gender-row').text();
+	var phone = $('#phone-row').text();
+	var email = $('#email-row').text();
+
+	$('#name').val(name);
+	$('#gender').val(gender);
+	$('#phone').val(phone);
+	$('#email').val(email);
+}
+
+function deleteData() {
+	alert('Delete employee');
+}
+
+function toastAlert(messages, messageType) {
+	$.simplyToast(messages, type = messageType, {
+		'offset' : {
+			'from' : 'top',
+			'amount' : 60
+		},
+		'align' : 'center',
+		'minWidth' : 500,
+		'delay' : 2000,
+		'allowDismiss' : false
 	});
 }
 
@@ -60,6 +96,12 @@ function resetForm() {
 function resetButton() {
 	$('#form-save').show();
 	$('#form-update').hide();
+}
+
+function updateButton() {
+	$('#form-save').hide();
+	$('#form-update').removeAttr('disabled');
+	$('#form-update').show();
 }
 
 function initialDialog(selector, data) {
@@ -96,39 +138,5 @@ function initialDialog(selector, data) {
 function dialogDragable(selector) {
 	$(selector).draggable({
 		handle : '.modal-dialog'
-	});
-}
-
-function updateData() {
-	var name = $('#name-row').text();
-	var gender = $('#gender-row').text();
-	var phone = $('#phone-row').text();
-	var email = $('#email-row').text();
-
-	$('#name').val(name);
-	$('#gender').val(gender);
-	$('#phone').val(phone);
-	$('#email').val(email);
-}
-
-function updateButton() {
-	$('#form-save').hide();
-	$('#form-update').removeAttr('disabled');
-	$('#form-update').show();
-}
-
-function deleteData() {
-	alert('Delete employee');
-}
-
-function toastAlert(messages, messageType) {
-	$.simplyToast(messages, type = messageType, {
-		'offset' : {
-			'from' : 'top',
-			'amount' : 60
-		},
-		'align' : 'center',
-		'minWidth' : 500,
-		'delay' : '2000',
 	});
 }
