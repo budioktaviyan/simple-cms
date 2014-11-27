@@ -5,6 +5,7 @@
 <html>
 <head>
 <title>Employee Data</title>
+<link href="<c:url value="/res/css/plugins/datepicker.css"/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value="/res/css/plugins/jquery-ui.min.css"/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value="/res/css/master.css"/>" rel="stylesheet" type="text/css" />
 </head>
@@ -63,11 +64,11 @@
 							</select>
 
 							<label>Birthdate</label>
-                            <div class="input-group date form-margin-bottom">
+                            <div id="birthdate-toggle" class="input-group date form-margin-bottom">
                                 <div class="input-group-addon">
-                                    <i class="glyphicon glyphicon-calendar"></i>
+                                   <i class="glyphicon glyphicon-calendar"></i>
                                 </div>
-                                <input id="birthdate" class="form-control" type="date" min="1970-1-1" max="2099-12-31" />
+                                <input id="birthdate" class="form-control" placeholder="Choose birthdate" disabled="disabled" />
                             </div>
 
                             <label>Phone Number</label>
@@ -103,6 +104,7 @@
 		</div>
 	</div>
 
+	<script src="<c:url value="/res/js/plugins/bootstrap-datepicker.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/plugins/jquery-ui.min.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/plugins/simply-toast.min.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/plugins/jquery.alphanum.js"/>" type="text/javascript"></script>

@@ -8,9 +8,6 @@ public class PagingInfo {
 	private int mPageSize;
 	private int mTotalRows;
 
-	public PagingInfo() {
-	}
-
 	public PagingInfo(int offset, int pageSize, int totalRows) {
 		mOffset = offset;
 		mPageSize = pageSize;

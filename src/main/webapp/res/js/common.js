@@ -140,3 +140,10 @@ function dialogDragable(selector) {
 		handle : '.modal-dialog'
 	});
 }
+
+function openDatepicker(selector) {
+	$(selector).datepicker({
+		format : 'yyyy-mm-d',
+		autoclose : true
+	});
+}

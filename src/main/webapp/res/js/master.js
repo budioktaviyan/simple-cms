@@ -10,6 +10,7 @@ $(document).ready(function() {
 		allowDecSep : false
 	});
 
+	openDatepicker('#birthdate-toggle');
 	resetButton();
 
 	$('.modal').each(function() {

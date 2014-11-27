@@ -30,7 +30,8 @@ public class EmployeeController {
 	private IDatabaseService databaseService;
 
 	@RequestMapping(value = "/master/employee/saveorupdate", method = RequestMethod.POST)
-	public @ResponseBody Map<String, String> saveorupdate(@RequestBody Employee employee) {
+	@ResponseBody
+	public Map<String, String> saveorupdate(@RequestBody Employee employee) {
 		Map<String, String> jsonObject = new HashMap<String, String>();
 		try {
 			databaseService.saveorUpdateEmployee(employee);

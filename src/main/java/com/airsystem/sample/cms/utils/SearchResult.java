@@ -10,9 +10,6 @@ public class SearchResult {
 
 	private PagingInfo mPagingInfo;
 
-	public SearchResult() {
-	}
-
 	public SearchResult(List records, PagingInfo pagingInfo) {
 		mRecords = records;
 		mPagingInfo = pagingInfo;
