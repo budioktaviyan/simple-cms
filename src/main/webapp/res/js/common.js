@@ -1,3 +1,6 @@
+// Global toast var
+var toast;
+
 function toggleObject(e, selector) {
 	e.preventDefault();
 	$(selector).toggleClass('toggled');
@@ -27,7 +30,6 @@ function saveData() {
 		url : path + '/master/employee/saveorupdate',
 		contentType : 'application/json; charset=UTF-8',
 		data : JSON.stringify(jsonObject),
-		dataType : 'json',
 		beforeSend : function(Xhr) {
 			message = '<i class="glyphicon glyphicon-info-sign" />&nbsp; Saving data...';
 			messageType = 'info';
@@ -49,6 +51,7 @@ function saveData() {
 		}
 		}
 
+		toastRemove();
 		toastAlert(message, messageType);
 		resetForm();
 	});
@@ -75,7 +78,7 @@ function deleteData() {
 }
 
 function toastAlert(messages, messageType) {
-	$.simplyToast(messages, type = messageType, {
+	toast = $.simplyToast(messages, type = messageType, {
 		'offset' : {
 			'from' : 'top',
 			'amount' : 60
@@ -85,6 +88,10 @@ function toastAlert(messages, messageType) {
 		'delay' : 2000,
 		'allowDismiss' : false
 	});
+}
+
+function toastRemove() {
+	$.simplyToast.remove(toast);
 }
 
 function resetForm() {
