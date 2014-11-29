@@ -1,4 +1,7 @@
 $(document).ready(function() {
+	openDatepicker('#birthdate-toggle');
+	resetButton();
+
 	$('#menu-toggle').click(function(e) {
 		toggleObject(e, '#wrapper');
 	});
@@ -8,13 +11,6 @@ $(document).ready(function() {
 		allowMinus : false,
 		allowThouSep : false,
 		allowDecSep : false
-	});
-
-	openDatepicker('#birthdate-toggle');
-	resetButton();
-
-	$('.modal').each(function() {
-		dialogDragable('.modal')
 	});
 });
 

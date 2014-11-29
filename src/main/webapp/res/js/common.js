@@ -1,6 +1,3 @@
-// Global toast var
-var toast;
-
 function toggleObject(e, selector) {
 	e.preventDefault();
 	$(selector).toggleClass('toggled');
@@ -14,13 +11,23 @@ function firstInput() {
 	}
 }
 
+function openDatepicker(selector) {
+	$(selector).datepicker({
+		format : 'd MM yyyy',
+		autoclose : true
+	});
+}
+
+function getDateFormat(param) {
+	return moment(param).format('YYYY-MM-DD');
+}
+
 function saveData() {
-	var message;
-	var messageType;
+	var birthdate = getDateFormat($('#birthdate').val());
 	var jsonObject = {
 		'name' : $('#name').val(),
 		'gender' : $('#gender').val(),
-		'birthdate' : $('#birthdate').val(),
+		'birthdate' : birthdate,
 		'phone' : $('#phone').val(),
 		'email' : $('#email').val()
 	};
@@ -30,34 +37,47 @@ function saveData() {
 		url : path + '/master/employee/saveorupdate',
 		contentType : 'application/json; charset=UTF-8',
 		data : JSON.stringify(jsonObject),
-		beforeSend : function(Xhr) {
-			message = '<i class="glyphicon glyphicon-info-sign" />&nbsp; Saving data...';
-			messageType = 'info';
-			toastAlert(message, messageType);
+		beforeSend : function() {
+			sweetAlert({
+				title : 'Please wait!',
+				text : 'Saving data...',
+				type : 'info',
+				confirmButtonText : 'Dismiss'
+			});
 		}
 	});
 
 	request.success(function(data) {
 		switch (data.response) {
 		case 'success': {
-			message = '<i class="glyphicon glyphicon-ok" />&nbsp; Data Successfully Saved!';
-			messageType = 'success';
+			sweetAlert({
+				title : 'Success!',
+				text : 'Data successfully saved!',
+				type : 'success',
+				confirmButtonText : 'OK'
+			});
+			resetForm();
 			break;
 		}
 		case 'fail': {
-			message = '<i class="glyphicon glyphicon-remove" />&nbsp; Failed Saved Data!';
-			messageType = 'danger';
+			sweetAlert({
+				title : 'Failed!',
+				text : 'Failed saving data!',
+				type : 'error',
+				confirmButtonText : 'Close'
+			});
 			break;
 		}
 		}
-
-		toastRemove();
-		toastAlert(message, messageType);
-		resetForm();
 	});
 
 	request.error(function(textStatus, errorThrown) {
-		console.log(textStatus + '\n' + errorThrown);
+		sweetAlert({
+			title : textStatus,
+			text : errorThrown,
+			type : 'warning',
+			confirmButtonText : 'Close'
+		});
 	});
 }
 
@@ -75,23 +95,6 @@ function updateData() {
 
 function deleteData() {
 	alert('Delete employee');
-}
-
-function toastAlert(messages, messageType) {
-	toast = $.simplyToast(messages, type = messageType, {
-		'offset' : {
-			'from' : 'top',
-			'amount' : 60
-		},
-		'align' : 'center',
-		'minWidth' : 500,
-		'delay' : 2000,
-		'allowDismiss' : false
-	});
-}
-
-function toastRemove() {
-	$.simplyToast.remove(toast);
 }
 
 function resetForm() {
@@ -140,17 +143,4 @@ function initialDialog(selector, data) {
 
 	content += '</tbody>' + '</table>' + '<div>';
 	$(selector).html(content);
-}
-
-function dialogDragable(selector) {
-	$(selector).draggable({
-		handle : '.modal-dialog'
-	});
-}
-
-function openDatepicker(selector) {
-	$(selector).datepicker({
-		format : 'yyyy-mm-d',
-		autoclose : true
-	});
 }
