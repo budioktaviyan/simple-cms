@@ -7,66 +7,53 @@
 <title>Employee Data</title>
 <link href="<c:url value="/res/css/plugins/bootstrap-datepicker.css"/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value="/res/css/plugins/sweet-alert.css"/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value="/res/css/plugins/jquery.dataTables.min.css"/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value="/res/css/plugins/dataTables.responsive.css"/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value="/res/css/master.css"/>" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<div id="wrapper">
-		<div id="sidebar-wrapper">
-			<ul class="sidebar-nav">
-				<li class="sidebar-brand"><a>Simple CMS</a></li>
-				<li class="sidebar"><a>Employee</a></li>
-				<hr class="sidebar-hr" />
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand"><a>Simple CMS</a></li>
+                <li class="sidebar"><a>Employee</a></li>
+                <hr class="sidebar-hr" />
 				<li><a href="<c:url value="/logout"/>">Logout</a></li>
-			</ul>
-		</div>
-		<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-			<a href="#menu-toggle" id="menu-toggle" class="btn btn-inverse btn-lg">
-				<i class="glyphicon glyphicon-th-list white"></i>
-			</a>
-		</nav>
-		<div id="page-content-wrapper">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-lg-12 form-header-margin-top">
-						<h1>Employee Management</h1>
-						<hr />
-					</div>
-					<div class="col-lg-6">
+            </ul>
+        </div>
+        <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+            <a href="#menu-toggle" id="menu-toggle" class="btn btn-inverse btn-lg">
+                <i class="glyphicon glyphicon-th-list white"></i>
+            </a>
+        </nav>
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 form-header-margin-top">
+                        <h1>Employee Management</h1>
+                        <hr />
+                    </div>
+                    <div class="col-lg-6">
 						<form class="form-group" method="post" action="<c:url value="/master/employee/saveorupdate"/>">
-							<label>Name</label>
-							<div class="input-group form-margin-bottom">
-								<input id="name" class="form-control" placeholder="Input name" />
-								<a href="#modal-toggle" id="modal-toggle" class="input-group-addon" onfocus="this.blur()"
-								   data-toggle="modal" data-target="#search-modal" data-backdrop="false">
-								   <i class="glyphicon glyphicon-search"></i>
-								</a>
+                            <label>Name</label>
+                            <div class="input-group form-margin-bottom">
+                                <input id="name" class="form-control" placeholder="Input name" />
+                                <a href="#modal-toggle" id="modal-toggle" class="input-group-addon" onfocus="this.blur()"
+                                   data-toggle="modal" data-target="#search-modal" data-backdrop="false">
+                                    <i class="glyphicon glyphicon-search"></i>
+                                </a>
+                            </div>
 
-								<div id="search-modal" class="modal" role="dialog" tabindex="-1">
-									<div class="modal-dialog">
-										<div class="modal-content">
-											<div class="modal-header">
-												<a class="close" role="button" data-dismiss="modal">&times;</a>
-												<h3 class="modal-title align-justify">Employee Data</h3>
-											</div>
-											<div id="employee-data" class="modal-body"></div>
-											<div class="modal-footer">
-												<a class="btn btn-primary" role="button" data-dismiss="modal">Close</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+                            <label>Gender</label>
+                            <select id="gender" class="form-control form-margin-bottom">
+                                <option>Male</option>
+                                <option>Female</option>
+                            </select>
 
-							<label>Gender</label>
-							<select id="gender" class="form-control form-margin-bottom">
-								<option>Male</option>
-								<option>Female</option>
-							</select>
-
-							<label>Birthdate</label>
+                            <label>Birthdate</label>
                             <div id="birthdate-toggle" class="input-group date form-margin-bottom">
                                 <div class="input-group-addon">
-                                   <i class="glyphicon glyphicon-calendar"></i>
+                                    <i class="glyphicon glyphicon-calendar"></i>
                                 </div>
                                 <input id="birthdate" class="form-control" placeholder="Choose birthdate" disabled="disabled" />
                             </div>
@@ -85,29 +72,62 @@
                                 <input id="email" class="form-control" type="email" placeholder="Input email address" />
                             </div>
 
-							<a id="form-save" class="btn btn-success btn-margin-right btn-form" role="button" disabled="disabled">
-								<span>Save</span>
-								<i class="glyphicon glyphicon-floppy-disk"></i>
-							</a>
-							<a id="form-update" class="btn btn-success btn-margin-right btn-form" role="button">
-								<span>Update</span>
-								<i class="glyphicon glyphicon-pencil"></i>
-							</a>
-							<a id="form-reset" class="btn btn-warning" role="button">
-								<span>Reset</span>
-								<i class="glyphicon glyphicon-refresh"></i>
-							</a>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                            <a id="form-save" class="btn btn-success btn-margin-right btn-form" role="button" disabled="disabled">
+                                <span>Save</span>
+                                <i class="glyphicon glyphicon-floppy-disk"></i>
+                            </a>
+                            <a id="form-update" class="btn btn-success btn-margin-right btn-form" role="button">
+                                <span>Update</span>
+                                <i class="glyphicon glyphicon-pencil"></i>
+                            </a>
+                            <a id="form-reset" class="btn btn-warning" role="button">
+                                <span>Reset</span>
+                                <i class="glyphicon glyphicon-refresh"></i>
+                            </a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="search-modal" class="modal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a class="close" role="button" data-dismiss="modal">&times;</a>
+                    <h3 class="modal-title align-justify">Employee Data</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table id="employee-table" class="table-bordered display responsive nowrap" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Name</th>
+                                    <th class="text-center">Gender</th>
+                                    <th class="text-center">Birthdate</th>
+                                    <th class="text-center">Phone</th>
+                                    <th class="text-center">Email</th>
+                                    <th class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="employee-data"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-primary" role="button" data-dismiss="modal">Close</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<script src="<c:url value="/res/js/plugins/jquery.alphanum.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/plugins/bootstrap-datepicker.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/res/js/plugins/jquery.alphanum.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/plugins/moment.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/res/js/plugins/spin.min.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/plugins/sweet-alert.min.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/res/js/plugins/jquery.dataTables.min.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/res/js/plugins/dataTables.responsive.min.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/common.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/master.js"/>" type="text/javascript"></script>
 	<script>

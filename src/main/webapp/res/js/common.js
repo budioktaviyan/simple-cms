@@ -3,6 +3,12 @@ function toggleObject(e, selector) {
 	$(selector).toggleClass('toggled');
 }
 
+function resetForm() {
+	$('.btn-form').attr('disabled', 'disabled');
+	$('input').val('');
+	$('select').prop('selectedIndex', 0);
+}
+
 function firstInput() {
 	if ($('input').val() != '') {
 		$('.btn-form').removeAttr('disabled');
@@ -13,13 +19,25 @@ function firstInput() {
 
 function openDatepicker(selector) {
 	$(selector).datepicker({
-		format : 'd MM yyyy',
-		autoclose : true
+		autoclose : true,
+		format : 'd MM yyyy'
 	});
 }
 
 function getDateFormat(param) {
-	return moment(param).format('YYYY-MM-DD');
+	if (param != '') {
+		return moment(param).format('YYYY-MM-DD');
+	}
+}
+
+function getAlertNotification(titleVal, textVal, typeVal, buttonVal, classVal) {
+	sweetAlert({
+		title : titleVal,
+		text : textVal,
+		type : typeVal,
+		confirmButtonText : buttonVal,
+		confirmButtonClass : classVal
+	});
 }
 
 function saveData() {
@@ -31,76 +49,82 @@ function saveData() {
 		'phone' : $('#phone').val(),
 		'email' : $('#email').val()
 	};
+	var spinnerOpts = {
+		lines : 11,
+		length : 10,
+		width : 3,
+		radius : 10,
+		corners : 1,
+		top : '50%',
+		left : '50%',
+		right : '50%'
+	};
 
+	var spinner = new Spinner(spinnerOpts);
 	var request = $.ajax({
 		type : 'POST',
 		url : path + '/master/employee/saveorupdate',
 		contentType : 'application/json; charset=UTF-8',
 		data : JSON.stringify(jsonObject),
 		beforeSend : function() {
-			sweetAlert({
-				title : 'Please wait!',
-				text : 'Saving data...',
-				type : 'info',
-				confirmButtonText : 'Dismiss'
-			});
+			var target = $('body').get(0);
+			spinner.spin(target);
 		}
 	});
 
 	request.success(function(data) {
+		spinner.stop();
 		switch (data.response) {
 		case 'success': {
-			sweetAlert({
-				title : 'Success!',
-				text : 'Data successfully saved!',
-				type : 'success',
-				confirmButtonText : 'OK'
-			});
+			getAlertNotification('Success!',
+								 'Data successfully saved!',
+								 'success',
+								 'OK',
+								 'btn-success');
 			resetForm();
 			break;
 		}
 		case 'fail': {
-			sweetAlert({
-				title : 'Failed!',
-				text : 'Failed saving data!',
-				type : 'error',
-				confirmButtonText : 'Close'
-			});
+			getAlertNotification('Failed!',
+								 'Failed saving data!',
+								 'error',
+								 'Cancel',
+								 'btn-danger');
 			break;
 		}
 		}
 	});
 
 	request.error(function(textStatus, errorThrown) {
-		sweetAlert({
-			title : textStatus,
-			text : errorThrown,
-			type : 'warning',
-			confirmButtonText : 'Close'
-		});
+		spinner.stop();
+		getAlertNotification(errorThrown,
+							 textStatus,
+							 'warning',
+							 'Dismiss',
+							 'btn-warning');
 	});
 }
 
 function updateData() {
 	var name = $('#name-row').text();
 	var gender = $('#gender-row').text();
+	var birthdate = $('#birthdate-row').text();
 	var phone = $('#phone-row').text();
 	var email = $('#email-row').text();
 
 	$('#name').val(name);
 	$('#gender').val(gender);
+	$('#birthdate').val(birthdate);
 	$('#phone').val(phone);
 	$('#email').val(email);
 }
 
 function deleteData() {
-	alert('Delete employee');
-}
-
-function resetForm() {
-	$('.btn-form').attr('disabled', 'disabled');
-	$('input').val('');
-	$('select').prop('selectedIndex', 0);
+	getAlertNotification('Success!',
+						 'Data successfully deleted!',
+						 'success',
+						 'OK',
+						 'btn-success');
 }
 
 function resetButton() {
@@ -114,33 +138,44 @@ function updateButton() {
 	$('#form-update').show();
 }
 
-function initialDialog(selector, data) {
-	var content = '<div class="table-responsive">' +
-						'<table class="table table-striped table-bordered table-hover table-condensed no-margin">' +
-							'<thead>' +
-								'<tr>' +
-									'<th class="text-center">Name</th>' +
-									'<th class="text-center">Gender</th>' +
-									'<th class="text-center">Phone</th>' +
-									'<th class="text-center">Email</th>' +
-									'<th class="text-center">Action</th>' +
-								'</tr>' +
-							'</thead>' +
-							'<tbody>';
-
-	for (var i = 0; i < 3; i++) {
-		content += '<tr>' +
-						'<td id="name-row">' + data + '</td>' +
-						'<td id="gender-row" class="text-center">Female</td>' +
-						'<td id="phone-row">+628567646893</td>' +
-						'<td id="email-row">budi.oktaviyan@icloud.com</td>' +
-						'<td>' +
-							'<a id="employee-edit" class="btn btn-sm btn-warning btn-block" role="button" data-dismiss="modal">Edit</a>' +
-							'<a id="employee-delete" class="btn btn-sm btn-danger btn-block" role="button" data-dismiss="modal">Delete</a>' +
-						'</td>' +
-				   '</tr>';
-	}
-
-	content += '</tbody>' + '</table>' + '<div>';
-	$(selector).html(content);
+function initialTable(table, row) {
+    var content = 	'<tr>' +
+				        '<td id="name-row">Budi Oktaviyan Suryanto</td>' +
+				        '<td id="gender-row" class="text-center">Male</td>' +
+				        '<td id="birthdate-row">4 October 1987</td>' +
+				        '<td id="phone-row">+628567646893</td>' +
+                        '<td id="email-row">budi.oktaviyan@icloud.com</td>' +
+				        '<td>' +
+				        	'<a id="employee-edit" class="btn btn-sm btn-warning btn-block pull-left" role="button" data-dismiss="modal">Edit</a>' +
+				        	'<a id="employee-delete" class="btn btn-sm btn-danger btn-block pull-right" role="button" data-dismiss="modal">Delete</a>' +
+				        '</td>' +
+			        '</tr>' +
+			        '<tr>' +
+				        '<td id="name-row">Indah Kurniawati</td>' +
+				        '<td id="gender-row" class="text-center">Female</td>' +
+				        '<td id="birthdate-row">16 February 1984</td>' +
+				        '<td id="phone-row">+6285716084368</td>' +
+                        '<td id="email-row">indah_aquarius@yahoo.com</td>' +
+				        '<td>' +
+				        	'<a id="employee-edit" class="btn btn-sm btn-warning btn-block pull-left" role="button" data-dismiss="modal">Edit</a>' +
+				        	'<a id="employee-delete" class="btn btn-sm btn-danger btn-block pull-right" role="button" data-dismiss="modal">Delete</a>' +
+				        '</td>' +
+			        '</tr>' +
+			        '<tr>' +
+				        '<td id="name-row">Amira Ratu Meidina</td>' +
+				        '<td id="gender-row" class="text-center">Female</td>' +
+				        '<td id="birthdate-row">14 May 2014</td>' +
+				        '<td id="phone-row">+6281289880275</td>' +
+                        '<td id="email-row">indah.arm@gmail.com</td>' +
+				        '<td>' +
+				        	'<a id="employee-edit" class="btn btn-sm btn-warning btn-block pull-left" role="button" data-dismiss="modal">Edit</a>' +
+				        	'<a id="employee-delete" class="btn btn-sm btn-danger btn-block pull-right" role="button" data-dismiss="modal">Delete</a>' +
+				        '</td>' +
+			        '</tr>';
+    $(row).html(content);
+    $(table).DataTable({
+       ordering: false,
+       responsive: true,
+       retrieve: true
+   });
 }
