@@ -5,7 +5,7 @@
 <html>
 <head>
 <title>Employee Data</title>
-<link href="<c:url value="/res/css/plugins/datepicker.css"/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value="/res/css/plugins/bootstrap-datepicker.css"/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value="/res/css/plugins/sweet-alert.css"/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value="/res/css/master.css"/>" rel="stylesheet" type="text/css" />
 </head>
@@ -104,9 +104,9 @@
 		</div>
 	</div>
 
+	<script src="<c:url value="/res/js/plugins/jquery.alphanum.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/plugins/bootstrap-datepicker.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/plugins/moment.js"/>" type="text/javascript"></script>
-	<script src="<c:url value="/res/js/plugins/jquery.alphanum.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/plugins/sweet-alert.min.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/common.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/master.js"/>" type="text/javascript"></script>
