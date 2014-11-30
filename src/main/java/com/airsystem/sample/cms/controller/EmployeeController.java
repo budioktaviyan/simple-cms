@@ -1,6 +1,7 @@
 package com.airsystem.sample.cms.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -42,5 +43,11 @@ public class EmployeeController {
 		}
 
 		return jsonObject;
+	}
+
+	@RequestMapping(value = "/master/employee/search", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Employee> search() {
+		return databaseService.findAllEmployee();
 	}
 }

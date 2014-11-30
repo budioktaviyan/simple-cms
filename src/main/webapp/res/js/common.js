@@ -24,10 +24,14 @@ function openDatepicker(selector) {
 	});
 }
 
-function getDateFormat(param) {
+function getDateFormat(param, dateFormat) {
 	if (param != '') {
-		return moment(param).format('YYYY-MM-DD');
+		return moment(param).format(dateFormat);
 	}
+}
+
+function getSpinner(options) {
+	return new Spinner(options);
 }
 
 function getAlertNotification(titleVal, textVal, typeVal, buttonVal, classVal) {
@@ -41,7 +45,7 @@ function getAlertNotification(titleVal, textVal, typeVal, buttonVal, classVal) {
 }
 
 function saveData() {
-	var birthdate = getDateFormat($('#birthdate').val());
+	var birthdate = getDateFormat($('#birthdate', 'YYYY-MM-DD').val());
 	var jsonObject = {
 		'name' : $('#name').val(),
 		'gender' : $('#gender').val(),
@@ -60,7 +64,7 @@ function saveData() {
 		right : '50%'
 	};
 
-	var spinner = new Spinner(spinnerOpts);
+	var spinner = getSpinner(spinnerOpts);
 	var request = $.ajax({
 		type : 'POST',
 		url : path + '/master/employee/saveorupdate',
@@ -139,43 +143,60 @@ function updateButton() {
 }
 
 function initialTable(table, row) {
-    var content = 	'<tr>' +
-				        '<td id="name-row">Budi Oktaviyan Suryanto</td>' +
-				        '<td id="gender-row" class="text-center">Male</td>' +
-				        '<td id="birthdate-row">4 October 1987</td>' +
-				        '<td id="phone-row">+628567646893</td>' +
-                        '<td id="email-row">budi.oktaviyan@icloud.com</td>' +
-				        '<td>' +
-				        	'<a id="employee-edit" class="btn btn-sm btn-warning btn-block pull-left" role="button" data-dismiss="modal">Edit</a>' +
-				        	'<a id="employee-delete" class="btn btn-sm btn-danger btn-block pull-right" role="button" data-dismiss="modal">Delete</a>' +
-				        '</td>' +
-			        '</tr>' +
-			        '<tr>' +
-				        '<td id="name-row">Indah Kurniawati</td>' +
-				        '<td id="gender-row" class="text-center">Female</td>' +
-				        '<td id="birthdate-row">16 February 1984</td>' +
-				        '<td id="phone-row">+6285716084368</td>' +
-                        '<td id="email-row">indah_aquarius@yahoo.com</td>' +
-				        '<td>' +
-				        	'<a id="employee-edit" class="btn btn-sm btn-warning btn-block pull-left" role="button" data-dismiss="modal">Edit</a>' +
-				        	'<a id="employee-delete" class="btn btn-sm btn-danger btn-block pull-right" role="button" data-dismiss="modal">Delete</a>' +
-				        '</td>' +
-			        '</tr>' +
-			        '<tr>' +
-				        '<td id="name-row">Amira Ratu Meidina</td>' +
-				        '<td id="gender-row" class="text-center">Female</td>' +
-				        '<td id="birthdate-row">14 May 2014</td>' +
-				        '<td id="phone-row">+6281289880275</td>' +
-                        '<td id="email-row">indah.arm@gmail.com</td>' +
-				        '<td>' +
-				        	'<a id="employee-edit" class="btn btn-sm btn-warning btn-block pull-left" role="button" data-dismiss="modal">Edit</a>' +
-				        	'<a id="employee-delete" class="btn btn-sm btn-danger btn-block pull-right" role="button" data-dismiss="modal">Delete</a>' +
-				        '</td>' +
-			        '</tr>';
-    $(row).html(content);
-    $(table).DataTable({
-       ordering: false,
-       responsive: true,
-       retrieve: true
-   });
+	var spinnerOpts = {
+		lines : 11,
+		length : 10,
+		width : 3,
+		radius : 10,
+		corners : 1,
+		top : '50%',
+		left : '50%',
+		right : '50%'
+	};
+
+	var spinner = getSpinner(spinnerOpts);
+	var response = $.ajax({
+		type : 'GET',
+		url : path + '/master/employee/search',
+		contentType : 'application/json; charset=UTF-8',
+		beforeSend : function() {
+			var target = $(table).get(0);
+			spinner.spin(target);
+		}
+	});
+
+	response.success(function(data) {
+		spinner.stop();
+
+		var content;
+		for (var item = 0; item < data.length; item++) {
+			content += 	'<tr>' +
+							'<td id="name-row">' + data[item].name + '</td>' +
+							'<td id="gender-row" class="text-center">' + data[item].gender + '</td>' +
+							'<td id="birthdate-row">' + getDateFormat(data[item].birthdate, 'D MMMM YYYY') + '</td>' +
+							'<td id="phone-row">' + data[item].phone + '</td>' +
+							'<td id="email-row">' + data[item].email + '</td>' +
+							'<td>' +
+								'<a id="employee-edit" class="btn btn-sm btn-warning btn-block" role="button" data-dismiss="modal">Edit</a>' +
+								'<a id="employee-delete" class="btn btn-sm btn-danger btn-block" role="button" data-dismiss="modal">Delete</a>' +
+							'</td>' +
+						'</tr>';
+		}
+
+		$(row).html(content);
+		$(table).DataTable({
+			ordering : false,
+			responsive: false,
+			retrieve : true,
+		});
+	});
+
+	response.error(function(textStatus, errorThrown) {
+		spinner.stop();
+		getAlertNotification(errorThrown,
+							 textStatus,
+							 'warning',
+							 'Dismiss',
+							 'btn-warning');
+	});
 }
