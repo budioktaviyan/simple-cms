@@ -23,6 +23,19 @@
 		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
 	</listener>
 
+	<!-- Sitemesh -->
+	<filter>
+		<filter-name>cms-sitemesh</filter-name>
+		<filter-class>org.sitemesh.config.ConfigurableSiteMeshFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>cms-sitemesh</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>ERROR</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+	</filter-mapping>
+
 	<!-- Spring Container -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
@@ -70,17 +83,4 @@
 		<error-code>500</error-code>
 		<location>/pages/error/500.jsp</location>
 	</error-page>
-
-	<!-- Sitemesh -->
-	<filter>
-		<filter-name>cms-sitemesh</filter-name>
-		<filter-class>org.sitemesh.config.ConfigurableSiteMeshFilter</filter-class>
-	</filter>
-
-	<filter-mapping>
-		<filter-name>cms-sitemesh</filter-name>
-		<url-pattern>/*</url-pattern>
-		<dispatcher>ERROR</dispatcher>
-		<dispatcher>FORWARD</dispatcher>
-	</filter-mapping>
 </web-app>
