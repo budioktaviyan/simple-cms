@@ -30,7 +30,18 @@ function getDateFormat(param, dateFormat) {
 	}
 }
 
-function getSpinner(options) {
+function getSpinner() {
+	var options = {
+		lines : 11,
+		length : 10,
+		width : 3,
+		radius : 10,
+		corners : 1,
+		top : '50%',
+		left : '50%',
+		right : '50%'
+	};
+
 	return new Spinner(options);
 }
 
@@ -53,18 +64,8 @@ function saveData() {
 		'phone' : $('#phone').val(),
 		'email' : $('#email').val()
 	};
-	var spinnerOpts = {
-		lines : 11,
-		length : 10,
-		width : 3,
-		radius : 10,
-		corners : 1,
-		top : '50%',
-		left : '50%',
-		right : '50%'
-	};
 
-	var spinner = getSpinner(spinnerOpts);
+	var spinner = getSpinner();
 	var request = $.ajax({
 		type : 'POST',
 		url : path + '/master/employee/saveorupdate',
@@ -143,18 +144,7 @@ function updateButton() {
 }
 
 function initialTable(table, row) {
-	var spinnerOpts = {
-		lines : 11,
-		length : 10,
-		width : 3,
-		radius : 10,
-		corners : 1,
-		top : '50%',
-		left : '50%',
-		right : '50%'
-	};
-
-	var spinner = getSpinner(spinnerOpts);
+	var spinner = getSpinner();
 	var response = $.ajax({
 		type : 'GET',
 		url : path + '/master/employee/search',
@@ -187,7 +177,7 @@ function initialTable(table, row) {
 		$(table).DataTable({
 			ordering : false,
 			responsive: false,
-			retrieve : true,
+			retrieve : true
 		});
 	});
 
