@@ -6,9 +6,8 @@
 <head>
 <title>Employee Data</title>
 <link href="<c:url value="/res/css/plugins/bootstrap-datepicker.css"/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value="/res/css/plugins/bootstrap-table.min.css"/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value="/res/css/plugins/sweet-alert.css"/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value="/res/css/plugins/jquery.dataTables.min.css"/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value="/res/css/plugins/dataTables.responsive.css"/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value="/res/css/master.css"/>" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -43,13 +42,11 @@
                                     <i class="glyphicon glyphicon-search"></i>
                                 </a>
                             </div>
-
                             <label>Gender</label>
                             <select id="gender" class="form-control form-margin-bottom">
                                 <option>Male</option>
                                 <option>Female</option>
                             </select>
-
                             <label>Birthdate</label>
                             <div id="birthdate-toggle" class="input-group date form-margin-bottom">
                                 <div class="input-group-addon">
@@ -57,7 +54,6 @@
                                 </div>
                                 <input id="birthdate" class="form-control" placeholder="Choose birthdate" disabled="disabled" />
                             </div>
-
                             <label>Phone Number</label>
                             <div class="input-group form-margin-bottom">
                                 <div class="input-group-addon">
@@ -65,13 +61,11 @@
                                 </div>
                                 <input id="phone" class="form-control" type="tel" placeholder="Input phone number" maxlength="15" />
                             </div>
-
                             <label>Email</label>
                             <div class="input-group lastform-margin-bottom">
                                 <div class="input-group-addon">@</div>
                                 <input id="email" class="form-control" type="email" placeholder="Input email address" />
                             </div>
-
                             <a id="form-save" class="btn btn-success btn-margin-right btn-form" role="button" disabled="disabled">
                                 <span>Save</span>
                                 <i class="glyphicon glyphicon-floppy-disk"></i>
@@ -98,21 +92,7 @@
                     <h3 class="modal-title align-justify">Employee Data</h3>
                 </div>
                 <div class="modal-body">
-                    <div class="table-responsive">
-                        <table id="employee-table" class="table-bordered display responsive nowrap" cellspacing="0" width="100%">
-                            <thead>
-                                <tr>
-                                    <th class="text-center">Name</th>
-                                    <th class="text-center">Gender</th>
-                                    <th class="text-center">Birthdate</th>
-                                    <th class="text-center">Phone</th>
-                                    <th class="text-center">Email</th>
-                                    <th class="text-center">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id="employee-data"></tbody>
-                        </table>
-                    </div>
+                    <table id="employee-data"></table>
                 </div>
                 <div class="modal-footer">
                     <a class="btn btn-primary" role="button" data-dismiss="modal">Close</a>
@@ -122,12 +102,11 @@
     </form>
 
 	<script src="<c:url value="/res/js/plugins/bootstrap-datepicker.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/res/js/plugins/bootstrap-table.min.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/plugins/jquery.alphanum.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/plugins/moment.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/plugins/spin.min.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/plugins/sweet-alert.min.js"/>" type="text/javascript"></script>
-	<script src="<c:url value="/res/js/plugins/jquery.dataTables.min.js"/>" type="text/javascript"></script>
-	<script src="<c:url value="/res/js/plugins/dataTables.responsive.min.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/common.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/master.js"/>" type="text/javascript"></script>
 	<script>

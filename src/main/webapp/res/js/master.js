@@ -30,7 +30,7 @@ $('#form-reset').click(function() {
 
 $('#modal-toggle').click(function(e) {
 	toggleObject(e, '#search-modal');
-	initialTable('#employee-table', '#employee-data');
+	getEmployeeData('#employee-data');
 });
 
 $(document).on('click', '#employee-edit', function() {

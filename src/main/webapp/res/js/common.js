@@ -56,11 +56,12 @@ function getAlertNotification(titleVal, textVal, typeVal, buttonVal, classVal) {
 }
 
 function saveData() {
-	var birthdate = getDateFormat($('#birthdate', 'YYYY-MM-DD').val());
+	var birthdate = $('#birthdate').val();
+	var birthdateDB = getDateFormat(birthdate, 'YYYY-MM-DD');
 	var jsonObject = {
 		'name' : $('#name').val(),
 		'gender' : $('#gender').val(),
-		'birthdate' : birthdate,
+		'birthdate' : birthdateDB,
 		'phone' : $('#phone').val(),
 		'email' : $('#email').val()
 	};
@@ -81,20 +82,12 @@ function saveData() {
 		spinner.stop();
 		switch (data.response) {
 		case 'success': {
-			getAlertNotification('Success!',
-								 'Data successfully saved!',
-								 'success',
-								 'OK',
-								 'btn-success');
+			getAlertNotification('Success!', 'Data successfully saved!', 'success', 'OK', 'btn-success');
 			resetForm();
 			break;
 		}
 		case 'fail': {
-			getAlertNotification('Failed!',
-								 'Failed saving data!',
-								 'error',
-								 'Cancel',
-								 'btn-danger');
+			getAlertNotification('Failed!', 'Failed saving data!', 'error', 'Cancel', 'btn-danger');
 			break;
 		}
 		}
@@ -102,11 +95,7 @@ function saveData() {
 
 	request.error(function(textStatus, errorThrown) {
 		spinner.stop();
-		getAlertNotification(errorThrown,
-							 textStatus,
-							 'warning',
-							 'Dismiss',
-							 'btn-warning');
+		getAlertNotification(errorThrown, textStatus, 'warning', 'Dismiss', 'btn-warning');
 	});
 }
 
@@ -125,11 +114,7 @@ function updateData() {
 }
 
 function deleteData() {
-	getAlertNotification('Success!',
-						 'Data successfully deleted!',
-						 'success',
-						 'OK',
-						 'btn-success');
+	getAlertNotification('Success!', 'Data successfully deleted!', 'success', 'OK', 'btn-success');
 }
 
 function resetButton() {
@@ -143,50 +128,36 @@ function updateButton() {
 	$('#form-update').show();
 }
 
-function initialTable(table, row) {
-	var spinner = getSpinner();
-	var response = $.ajax({
-		type : 'GET',
+function getEmployeeData(selector) {
+	$(selector).bootstrapTable({
+		method : 'GET',
 		url : path + '/master/employee/search',
-		contentType : 'application/json; charset=UTF-8',
-		beforeSend : function() {
-			var target = $(table).get(0);
-			spinner.spin(target);
-		}
-	});
-
-	response.success(function(data) {
-		spinner.stop();
-
-		var content;
-		for (var item = 0; item < data.length; item++) {
-			content += 	'<tr>' +
-							'<td id="name-row">' + data[item].name + '</td>' +
-							'<td id="gender-row" class="text-center">' + data[item].gender + '</td>' +
-							'<td id="birthdate-row">' + getDateFormat(data[item].birthdate, 'D MMMM YYYY') + '</td>' +
-							'<td id="phone-row">' + data[item].phone + '</td>' +
-							'<td id="email-row">' + data[item].email + '</td>' +
-							'<td>' +
-								'<a id="employee-edit" class="btn btn-sm btn-warning btn-block" role="button" data-dismiss="modal">Edit</a>' +
-								'<a id="employee-delete" class="btn btn-sm btn-danger btn-block" role="button" data-dismiss="modal">Delete</a>' +
-							'</td>' +
-						'</tr>';
-		}
-
-		$(row).html(content);
-		$(table).DataTable({
-			ordering : false,
-			responsive: false,
-			retrieve : true
-		});
-	});
-
-	response.error(function(textStatus, errorThrown) {
-		spinner.stop();
-		getAlertNotification(errorThrown,
-							 textStatus,
-							 'warning',
-							 'Dismiss',
-							 'btn-warning');
+		cache : false,
+		height : 400,
+		pagination : true,
+		search : true,
+		showRefresh : true,
+		searchAlign : 'left',
+		columns : [ {
+			field : 'name',
+			title : '<p class="text-center">Name</p>',
+			align : 'left'
+		}, {
+			field : 'gender',
+			title : '<p class="text-center">Gender</p>',
+			align : 'center'
+		}, {
+			field : 'birthdate',
+			title : '<p class="text-center">Birthdate</p>',
+			align : 'left'
+		}, {
+			field : 'phone',
+			title : '<p class="text-center">Phone Number</p>',
+			align : 'left'
+		}, {
+			field : 'email',
+			title : '<p class="text-center">Email</p>',
+			align : 'left'
+		} ]
 	});
 }
