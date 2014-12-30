@@ -84,7 +84,7 @@
             </div>
         </div>
     </div>
-    <form id="search-modal" class="modal" role="dialog" method="get" action="<c:url value="/master/employee/search"/>">
+    <div id="search-modal" class="modal" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -99,7 +99,7 @@
                 </div>
             </div>
         </div>
-    </form>
+    </div>
 
 	<script src="<c:url value="/res/js/plugins/bootstrap-datepicker.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/plugins/bootstrap-table.min.js"/>" type="text/javascript"></script>

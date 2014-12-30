@@ -117,6 +117,45 @@ function deleteData() {
 	getAlertNotification('Success!', 'Data successfully deleted!', 'success', 'OK', 'btn-success');
 }
 
+function getEmployeeData(selector) {
+	$(selector).bootstrapTable({
+		method : 'GET',
+		url : path + '/master/employee/search',
+		cache : false,
+		height : 400,
+		search : true,
+		showRefresh : true,
+		searchAlign : 'left',
+		clickToSelect : true,
+		singleSelect : true,
+		columns : [ {
+			field : 'state',
+			title : 'Select',
+			checkbox : true
+		}, {
+			field : 'name',
+			title : 'Name',
+			align : 'left'
+		}, {
+			field : 'gender',
+			title : 'Gender',
+			align : 'center'
+		}, {
+			field : 'birthdate',
+			title : 'Birthdate',
+			align : 'left'
+		}, {
+			field : 'phone',
+			title : 'Phone Number',
+			align : 'center'
+		}, {
+			field : 'email',
+			title : 'Email',
+			align : 'left'
+		} ]
+	});
+}
+
 function resetButton() {
 	$('#form-save').show();
 	$('#form-update').hide();
@@ -126,38 +165,4 @@ function updateButton() {
 	$('#form-save').hide();
 	$('#form-update').removeAttr('disabled');
 	$('#form-update').show();
-}
-
-function getEmployeeData(selector) {
-	$(selector).bootstrapTable({
-		method : 'GET',
-		url : path + '/master/employee/search',
-		cache : false,
-		height : 400,
-		pagination : true,
-		search : true,
-		showRefresh : true,
-		searchAlign : 'left',
-		columns : [ {
-			field : 'name',
-			title : '<p class="text-center">Name</p>',
-			align : 'left'
-		}, {
-			field : 'gender',
-			title : '<p class="text-center">Gender</p>',
-			align : 'center'
-		}, {
-			field : 'birthdate',
-			title : '<p class="text-center">Birthdate</p>',
-			align : 'left'
-		}, {
-			field : 'phone',
-			title : '<p class="text-center">Phone Number</p>',
-			align : 'left'
-		}, {
-			field : 'email',
-			title : '<p class="text-center">Email</p>',
-			align : 'left'
-		} ]
-	});
 }
