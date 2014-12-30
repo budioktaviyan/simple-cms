@@ -119,42 +119,81 @@ function deleteData() {
 
 function getEmployeeData(selector) {
 	$(selector).bootstrapTable({
-		method : 'GET',
-		url : path + '/master/employee/search',
 		cache : false,
 		height : 400,
+		method : 'GET',
 		search : true,
-		showRefresh : true,
 		searchAlign : 'left',
-		clickToSelect : true,
-		singleSelect : true,
+		showRefresh : true,
+		url : path + '/master/employee/search',
+
 		columns : [ {
-			field : 'state',
-			title : 'Select',
-			checkbox : true
+			field : 'id',
+			visible : false
 		}, {
+			align : 'left',
 			field : 'name',
-			title : 'Name',
-			align : 'left'
+			title : 'Name'
 		}, {
+			align : 'center',
 			field : 'gender',
-			title : 'Gender',
-			align : 'center'
+			title : 'Gender'
 		}, {
+			align : 'left',
 			field : 'birthdate',
-			title : 'Birthdate',
-			align : 'left'
+			formatter : 'birthdateFormatter',
+			title : 'Birthdate'
 		}, {
+			align : 'center',
 			field : 'phone',
-			title : 'Phone Number',
-			align : 'center'
+			formatter : 'genericFormatter',
+			title : 'Phone Number'
 		}, {
+			align : 'left',
 			field : 'email',
-			title : 'Email',
-			align : 'left'
+			formatter : 'genericFormatter',
+			title : 'Email'
+		}, {
+			align : 'center',
+			field : 'select',
+			formatter : 'selectFormatter',
+			events : 'selectEvents',
+			title : 'Select'
 		} ]
 	});
 }
+
+function genericFormatter(value) {
+	if (value != '') {
+		return value;
+	} else {
+		return 'N/A';
+	}
+}
+
+function birthdateFormatter(value) {
+	if (value != null) {
+		return getDateFormat(value, 'D MMMM YYYY');
+	} else {
+		return 'N/A';
+	}
+}
+
+function selectFormatter(value, row, index) {
+	return [ '<a class="edit" href="javascript:void(0)" title="Edit">',
+			'<i class="glyphicon glyphicon-edit"></i>', '</a>',
+			'<a class="delete" href="javascript:void(0)" title="Delete">',
+			'<i class="glyphicon glyphicon-remove"></i>', '</a>' ].join('');
+}
+
+window.selectEvents = {
+	'click .edit' : function(e, value, row, index) {
+		alert('You click edit icon, row: ' + JSON.stringify(row));
+	},
+	'click .delete' : function(e, value, row, index) {
+		alert('You click delete icon, row: ' + JSON.stringify(row));
+	}
+};
 
 function resetButton() {
 	$('#form-save').show();
