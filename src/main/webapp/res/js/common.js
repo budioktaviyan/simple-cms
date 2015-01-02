@@ -147,7 +147,7 @@ function deleteData(jsonObject) {
 }
 
 function getEmployeeData(selector) {
-	$(selector).bootstrapTable({
+	$(selector).bootstrapTable('refresh').bootstrapTable({
 		cache : false,
 		height : 400,
 		method : 'GET',
@@ -157,6 +157,12 @@ function getEmployeeData(selector) {
 		url : path + '/master/employee/search',
 
 		columns : [ {
+			align : 'center',
+			field : 'action',
+			formatter : 'actionFormatter',
+			events : 'actionEvents',
+			title : 'Action'
+		}, {
 			field : 'id',
 			visible : false
 		}, {
@@ -182,12 +188,6 @@ function getEmployeeData(selector) {
 			field : 'email',
 			formatter : 'genericFormatter',
 			title : 'Email'
-		}, {
-			align : 'center',
-			field : 'action',
-			formatter : 'actionFormatter',
-			events : 'actionEvents',
-			title : 'Action'
 		} ]
 	});
 }
