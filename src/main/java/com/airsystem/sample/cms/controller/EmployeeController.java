@@ -45,6 +45,21 @@ public class EmployeeController {
 		return jsonObject;
 	}
 
+	@RequestMapping(value = "/master/employee/delete", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, String> delete(@RequestBody Employee employee) {
+		Map<String, String> jsonObject = new HashMap<String, String>();
+		try {
+			databaseService.deleteEmployee(employee);
+			jsonObject.put(RESPONSE, SUCCESS);
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			jsonObject.put(RESPONSE, FAIL);
+		}
+
+		return jsonObject;
+	}
+
 	@RequestMapping(value = "/master/employee/search", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Employee> search() {
