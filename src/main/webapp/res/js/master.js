@@ -14,13 +14,18 @@ $(document).ready(function() {
 	});
 });
 
-$('input').keyup(function() {
+$('#name').keyup(function() {
 	firstInput();
 });
 
 $('#form-save').click(function(e) {
 	e.preventDefault();
-	saveData();
+	saveorupdateData();
+});
+
+$('#form-update').click(function(e) {
+	e.preventDefault();
+	saveorupdateData();
 });
 
 $('#form-reset').click(function() {
@@ -31,13 +36,4 @@ $('#form-reset').click(function() {
 $('#modal-toggle').click(function(e) {
 	toggleObject(e, '#search-modal');
 	getEmployeeData('#employee-data');
-});
-
-$(document).on('click', '#employee-edit', function() {
-	updateData();
-	updateButton();
-});
-
-$(document).on('click', '#employee-delete', function() {
-	deleteData();
 });

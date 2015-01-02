@@ -123,8 +123,16 @@
 	text-align: justify;
 }
 
+.red {
+	color: #C9302C;
+}
+
 .white {
 	color: #FFFFFF;
+}
+
+.yellow {
+	color: #F0AD4E;
 }
 
 @media ( min-width : 768px) {

@@ -36,6 +36,7 @@
 						<form class="form-group" method="post" action="<c:url value="/master/employee/saveorupdate"/>">
                             <label>Name</label>
                             <div class="input-group form-margin-bottom">
+                            	<input id="employeeId" type="hidden" />
                                 <input id="name" class="form-control" placeholder="Input name" />
                                 <a href="#modal-toggle" id="modal-toggle" class="input-group-addon" onfocus="this.blur()"
                                    data-toggle="modal" data-target="#search-modal" data-backdrop="false">

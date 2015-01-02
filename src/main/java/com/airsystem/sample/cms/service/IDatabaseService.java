@@ -15,8 +15,6 @@ public interface IDatabaseService {
 
 	public List findAllEmployee();
 
-	public Employee findByEmployeeId(String employeeId);
-
 	public SearchResult searchEmployee(Constraint constraint, boolean isUsingPaging, int offset, int pageSize);
 
 	public void saveorUpdateEmployee(Employee employee);

@@ -39,11 +39,6 @@ public class DatabaseService implements IDatabaseService {
 	}
 
 	@Override
-	public Employee findByEmployeeId(String employeeId) {
-		return (Employee) sessionFactory.getCurrentSession().get(Employee.class, employeeId);
-	}
-
-	@Override
 	public SearchResult searchEmployee(Constraint constraint, boolean isUsingPaging, int offset, int pageSize) {
 		return baseService.searchHQL("employee", "Employee employee", constraint, isUsingPaging, offset, pageSize);
 	}

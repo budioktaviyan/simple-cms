@@ -10,7 +10,7 @@ function resetForm() {
 }
 
 function firstInput() {
-	if ($('input').val() != '') {
+	if ($('#name').val() != '') {
 		$('.btn-form').removeAttr('disabled');
 	} else {
 		$('.btn-form').attr('disabled', 'disabled');
@@ -55,10 +55,11 @@ function getAlertNotification(titleVal, textVal, typeVal, buttonVal, classVal) {
 	});
 }
 
-function saveData() {
+function saveorupdateData() {
 	var birthdate = $('#birthdate').val();
 	var birthdateDB = getDateFormat(birthdate, 'YYYY-MM-DD');
 	var jsonObject = {
+		'id' : $('#employeeId').val(),
 		'name' : $('#name').val(),
 		'gender' : $('#gender').val(),
 		'birthdate' : birthdateDB,
@@ -84,6 +85,7 @@ function saveData() {
 		case 'success': {
 			getAlertNotification('Success!', 'Data successfully saved!', 'success', 'OK', 'btn-success');
 			resetForm();
+			resetButton();
 			break;
 		}
 		case 'fail': {
@@ -99,22 +101,20 @@ function saveData() {
 	});
 }
 
-function updateData() {
-	var name = $('#name-row').text();
-	var gender = $('#gender-row').text();
-	var birthdate = $('#birthdate-row').text();
-	var phone = $('#phone-row').text();
-	var email = $('#email-row').text();
+function updateData(jsonObject) {
+	var employees = JSON.parse(jsonObject);
+	var birthdate = birthdateFormatter(employees.birthdate);
 
-	$('#name').val(name);
-	$('#gender').val(gender);
+	$('#employeeId').val(employees.id);
+	$('#name').val(employees.name);
 	$('#birthdate').val(birthdate);
-	$('#phone').val(phone);
-	$('#email').val(email);
+	$('#gender').val(employees.gender);
+	$('#phone').val(employees.phone);
+	$('#email').val(employees.email);
 }
 
-function deleteData() {
-	getAlertNotification('Success!', 'Data successfully deleted!', 'success', 'OK', 'btn-success');
+function deleteData(jsonObject) {
+	getAlertNotification('Success!', 'Data successfully deleted!\n' + jsonObject, 'success', 'OK', 'btn-success');
 }
 
 function getEmployeeData(selector) {
@@ -141,7 +141,7 @@ function getEmployeeData(selector) {
 		}, {
 			align : 'left',
 			field : 'birthdate',
-			formatter : 'birthdateFormatter',
+			formatter : 'birthdateTableFormatter',
 			title : 'Birthdate'
 		}, {
 			align : 'center',
@@ -155,10 +155,10 @@ function getEmployeeData(selector) {
 			title : 'Email'
 		}, {
 			align : 'center',
-			field : 'select',
-			formatter : 'selectFormatter',
-			events : 'selectEvents',
-			title : 'Select'
+			field : 'action',
+			formatter : 'actionFormatter',
+			events : 'actionEvents',
+			title : 'Action'
 		} ]
 	});
 }
@@ -175,23 +175,36 @@ function birthdateFormatter(value) {
 	if (value != null) {
 		return getDateFormat(value, 'D MMMM YYYY');
 	} else {
+		return '';
+	}
+}
+
+function birthdateTableFormatter(value) {
+	if (value != null) {
+		return getDateFormat(value, 'D MMMM YYYY');
+	} else {
 		return 'N/A';
 	}
 }
 
-function selectFormatter(value, row, index) {
+function actionFormatter(value, row, index) {
 	return [ '<a class="edit" href="javascript:void(0)" title="Edit">',
-			'<i class="glyphicon glyphicon-edit"></i>', '</a>',
-			'<a class="delete" href="javascript:void(0)" title="Delete">',
-			'<i class="glyphicon glyphicon-remove"></i>', '</a>' ].join('');
+	         	'<i class="glyphicon glyphicon-edit yellow pull-left"></i>',
+	         '</a>',
+	         '<a class="delete" href="javascript:void(0)" title="Delete">',
+	         	'<i class="glyphicon glyphicon-remove red pull-right"></i>',
+	         '</a>' ].join('');
 }
 
-window.selectEvents = {
+window.actionEvents = {
 	'click .edit' : function(e, value, row, index) {
-		alert('You click edit icon, row: ' + JSON.stringify(row));
+		var jsonObject = JSON.stringify(row);
+		updateData(jsonObject);
+		updateButton();
 	},
 	'click .delete' : function(e, value, row, index) {
-		alert('You click delete icon, row: ' + JSON.stringify(row));
+		var jsonObject = JSON.stringify(row);
+		deleteData(jsonObject);
 	}
 };
 
@@ -201,6 +214,7 @@ function resetButton() {
 }
 
 function updateButton() {
+	$('#search-modal').modal('hide');
 	$('#form-save').hide();
 	$('#form-update').removeAttr('disabled');
 	$('#form-update').show();
