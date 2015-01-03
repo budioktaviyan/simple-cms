@@ -131,6 +131,7 @@ function deleteData(jsonObject) {
 		switch (data.response) {
 		case 'success': {
 			getAlertNotification('Success!', 'Data successfully deleted!', 'success', 'OK', 'btn-success');
+			refreshTable('#employee-data');
 			break;
 		}
 		case 'fail': {
@@ -236,6 +237,10 @@ window.actionEvents = {
 		deleteData(jsonObject);
 	}
 };
+
+function refreshTable(selector) {
+	$(selector).bootstrapTable('refresh');
+}
 
 function resetButton() {
 	$('#form-save').show();
