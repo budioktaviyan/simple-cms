@@ -20,6 +20,7 @@ import com.airsystem.sample.cms.service.IDatabaseService;
  */
 
 @Controller
+@RequestMapping("/master/employee*")
 public class EmployeeController {
 	private static final Logger LOG = Logger.getLogger(EmployeeController.class.getSimpleName());
 
@@ -30,7 +31,13 @@ public class EmployeeController {
 	@Autowired
 	private IDatabaseService databaseService;
 
-	@RequestMapping(value = "/master/employee/saveorupdate", method = RequestMethod.POST)
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Employee> search() {
+		return databaseService.findAllEmployee();
+	}
+
+	@RequestMapping(value = "/saveorupdate", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> saveorupdate(@RequestBody Employee employee) {
 		Map<String, String> jsonObject = new HashMap<String, String>();
@@ -45,7 +52,7 @@ public class EmployeeController {
 		return jsonObject;
 	}
 
-	@RequestMapping(value = "/master/employee/delete", method = RequestMethod.POST)
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> delete(@RequestBody Employee employee) {
 		Map<String, String> jsonObject = new HashMap<String, String>();
@@ -58,11 +65,5 @@ public class EmployeeController {
 		}
 
 		return jsonObject;
-	}
-
-	@RequestMapping(value = "/master/employee/search", method = RequestMethod.GET)
-	@ResponseBody
-	public List<Employee> search() {
-		return databaseService.findAllEmployee();
 	}
 }
