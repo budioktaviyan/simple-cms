@@ -149,9 +149,9 @@ function deleteData(jsonObject) {
 
 function getEmployeeData(selector) {
 	$(selector).bootstrapTable('refresh').bootstrapTable({
-		cache : false,
 		height : 400,
 		method : 'GET',
+		pagination : true,
 		search : true,
 		searchAlign : 'left',
 		showRefresh : true,
