@@ -123,6 +123,15 @@
 	text-align: justify;
 }
 
+/* Table Styles */
+.modal-dialog-employee {
+	width: 900px;
+}
+
+.modal-content-employee {
+	width: 900px;
+}
+
 .red {
 	color: #C9302C;
 }
@@ -135,6 +144,7 @@
 	color: #F0AD4E;
 }
 
+/* Responsive */
 @media ( min-width : 768px) {
 	#wrapper {
 		padding-left: 250px;
