@@ -103,7 +103,7 @@ function saveorupdateData() {
 
 function updateData(jsonObject) {
 	var employees = JSON.parse(jsonObject);
-	var birthdate = birthdateFormatter(employees.birthdate);
+	var birthdate = birthdateFormatter(employees.birthdate, 'form');
 
 	$('#employeeId').val(employees.id);
 	$('#name').val(employees.name);
@@ -177,7 +177,7 @@ function getEmployeeData(selector) {
 		}, {
 			align : 'left',
 			field : 'birthdate',
-			formatter : 'birthdateTableFormatter',
+			formatter : 'birthdateFormatter',
 			title : 'Birthdate'
 		}, {
 			align : 'center',
@@ -201,19 +201,23 @@ function genericFormatter(value) {
 	}
 }
 
-function birthdateFormatter(value) {
-	if (value != null) {
-		return getDateFormat(value, 'D MMMM YYYY');
-	} else {
-		return '';
+function birthdateFormatter(value, type) {
+	switch (type) {
+	case 'form': {
+		if (value != null) {
+			return getDateFormat(value, 'D MMMM YYYY');
+		} else {
+			return '';
+		}
+		break;
 	}
-}
-
-function birthdateTableFormatter(value) {
-	if (value != null) {
-		return getDateFormat(value, 'D MMMM YYYY');
-	} else {
-		return 'N/A';
+	default: {
+		if (value != null) {
+			return getDateFormat(value, 'D MMMM YYYY');
+		} else {
+			return 'N/A';
+		}
+	}
 	}
 }
 
