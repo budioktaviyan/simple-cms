@@ -121,7 +121,7 @@ function deleteData(jsonObject) {
 		contentType : 'application/json; charset=UTF-8',
 		data : jsonObject,
 		beforeSend : function() {
-			var target = $('employee-data').get(0);
+			var target = $('#employee-data').get(0);
 			spinner.spin(target);
 		}
 	});
@@ -202,22 +202,17 @@ function genericFormatter(value) {
 }
 
 function birthdateFormatter(value, type) {
-	switch (type) {
-	case 'form': {
-		if (value != null) {
-			return getDateFormat(value, 'D MMMM YYYY');
-		} else {
+	if (value != null) {
+		return getDateFormat(value, 'D MMMM YYYY');
+	} else {
+		switch (type) {
+		case 'form': {
 			return '';
 		}
-		break;
-	}
-	default: {
-		if (value != null) {
-			return getDateFormat(value, 'D MMMM YYYY');
-		} else {
+		default: {
 			return 'N/A';
 		}
-	}
+		}
 	}
 }
 
