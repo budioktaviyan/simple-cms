@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.airsystem.sample.cms.domain.Employee;
+import com.airsystem.sample.cms.domain.UserApp;
 
 /**
  * @author Budi Oktaviyan Suryanto (budi.oktaviyan@icloud.com)
@@ -26,7 +27,17 @@ public class DatabaseService implements IDatabaseService {
 
 	@Override
 	public List findUser(Map<String, Object> parameters) {
-		return baseService.runHQL("from UserApp where username = :username", parameters);
+		return baseService.runHQL("from UserApp where username = :username",parameters);
+	}
+
+	@Override
+	public void saveorUpdateUser(UserApp user) {
+		sessionFactory.getCurrentSession().saveOrUpdate(user);
+	}
+
+	@Override
+	public void deleteUser(UserApp user) {
+		sessionFactory.getCurrentSession().delete(user);
 	}
 
 	@Override

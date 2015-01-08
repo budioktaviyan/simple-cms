@@ -123,21 +123,13 @@
 	text-align: justify;
 }
 
-/* Table Styles */
-.modal-dialog-employee {
-	width: 900px;
-}
-
-.modal-content-employee {
-	width: 900px;
-}
-
-.red {
-	color: #C9302C;
-}
-
 .white {
 	color: #FFFFFF;
+}
+
+/* Table Styles */
+.red {
+	color: #C9302C;
 }
 
 .yellow {

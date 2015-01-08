@@ -86,8 +86,8 @@
         </div>
     </div>
     <div id="search-modal" class="modal" role="dialog">
-        <div class="modal-dialog modal-dialog-employee">
-            <div class="modal-content modal-content-employee">
+        <div class="modal-dialog">
+            <div class="modal-content">
                 <div class="modal-header">
                     <a class="close" role="button" data-dismiss="modal">&times;</a>
                     <h3 class="modal-title align-justify">Employee Data</h3>

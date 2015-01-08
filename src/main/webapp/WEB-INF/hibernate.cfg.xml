@@ -20,6 +20,7 @@
 
 		<!-- Hibernate Beans -->
 		<mapping class="com.airsystem.sample.cms.domain.UserApp" />
+		<mapping class="com.airsystem.sample.cms.domain.UserRole" />
 		<mapping class="com.airsystem.sample.cms.domain.Employee" />
 	</session-factory>
 </hibernate-configuration>
