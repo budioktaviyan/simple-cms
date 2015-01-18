@@ -24,13 +24,15 @@ import com.airsystem.sample.cms.utils.Constant;
 
 @Service(value = "userDetailsService")
 public class UserAppService implements UserDetailsService {
+	private static final String USERNAME = "username";
+
 	@Autowired
 	private IDatabaseService databaseService;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Map parameters = new HashMap();
-		parameters.put("username", username);
+		parameters.put(USERNAME, username);
 
 		List users = databaseService.findUser(parameters);
 		if (users.size() == 0) {

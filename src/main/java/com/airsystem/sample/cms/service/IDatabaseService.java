@@ -12,6 +12,8 @@ import com.airsystem.sample.cms.domain.UserApp;
 public interface IDatabaseService {
 	public List findUser(Map<String, Object> parameters);
 
+	public List findAllUser(Map<String, Object> parameters);
+
 	public void saveorUpdateUser(UserApp user);
 
 	public void deleteUser(UserApp user);

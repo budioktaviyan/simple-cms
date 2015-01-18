@@ -4,15 +4,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Employee Data</title>
+<title>User Data</title>
 </head>
 <body>
 	<div id="wrapper">
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand"><a>Simple CMS</a></li>
-                <li class="sidebar"><a href="<c:url value="/master/user"/>">User</a></li>
-                <li class="sidebar"><a>Employee</a></li>
+                <li class="sidebar"><a>User</a></li>
+                <li class="sidebar"><a href="<c:url value="/master/employee"/>">Employee</a></li>
                 <hr class="sidebar-hr" />
 				<li><a href="<c:url value="/logout"/>">Logout</a></li>
             </ul>
@@ -26,43 +26,28 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12 form-header-margin-top">
-                        <h1>Employee Management</h1>
+                        <h1>User Management</h1>
                         <hr />
                     </div>
                     <div class="col-lg-6">
-						<form class="form-group" method="post" action="<c:url value="/master/employee/saveorupdate"/>">
-                            <label>Name</label>
+						<form class="form-group" method="post" action="<c:url value="/master/user/saveorupdate"/>">
+                            <label>Username</label>
                             <div class="input-group form-margin-bottom">
-                            	<input id="employeeId" type="hidden" />
-                                <input id="name" class="form-control" placeholder="Input name" />
+                            	<input id="userId" type="hidden" />
+                                <input id="username" class="form-control" placeholder="Input username" />
                                 <a href="#modal-toggle" id="modal-toggle" class="input-group-addon" onfocus="this.blur()"
                                    data-toggle="modal" data-target="#search-modal" data-backdrop="false">
                                     <i class="glyphicon glyphicon-search"></i>
                                 </a>
                             </div>
-                            <label>Gender</label>
-                            <select id="gender" class="form-control form-margin-bottom">
-                                <option>Male</option>
-                                <option>Female</option>
+                            <label>Role</label>
+                            <select id="role" class="form-control form-margin-bottom">
+                                <option>ADMIN</option>
+                                <option>USER</option>
                             </select>
-                            <label>Birthdate</label>
-                            <div id="birthdate-toggle" class="input-group date form-margin-bottom">
-                                <div class="input-group-addon">
-                                    <i class="glyphicon glyphicon-calendar"></i>
-                                </div>
-                                <input id="birthdate" class="form-control" placeholder="Choose birthdate" disabled="disabled" />
-                            </div>
-                            <label>Phone Number</label>
-                            <div class="input-group form-margin-bottom">
-                                <div class="input-group-addon">
-                                    <i class="glyphicon glyphicon-earphone"></i>
-                                </div>
-                                <input id="phone" class="form-control" type="tel" placeholder="Input phone number" maxlength="15" />
-                            </div>
-                            <label>Email</label>
+                            <label>Password</label>
                             <div class="input-group lastform-margin-bottom">
-                                <div class="input-group-addon">@</div>
-                                <input id="email" class="form-control" type="email" placeholder="Input email address" />
+                                <input id="password" class="form-control" type="password" placeholder="Input password" />
                             </div>
                             <a id="form-save" class="btn btn-success btn-margin-right btn-form" role="button" disabled="disabled">
                                 <span>Save</span>
@@ -87,10 +72,10 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <a class="close" role="button" data-dismiss="modal">&times;</a>
-                    <h3 class="modal-title align-justify">Employee Data</h3>
+                    <h3 class="modal-title align-justify">User Data</h3>
                 </div>
                 <div class="modal-body">
-                    <table id="employee-data"></table>
+                    <table id="user-data"></table>
                 </div>
                 <div class="modal-footer">
                     <a class="btn btn-primary" role="button" data-dismiss="modal">Close</a>

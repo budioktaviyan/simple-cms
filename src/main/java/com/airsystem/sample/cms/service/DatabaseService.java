@@ -27,7 +27,12 @@ public class DatabaseService implements IDatabaseService {
 
 	@Override
 	public List findUser(Map<String, Object> parameters) {
-		return baseService.runHQL("from UserApp where username = :username",parameters);
+		return baseService.runHQL("from UserApp where username = :username", parameters);
+	}
+
+	@Override
+	public List findAllUser(Map<String, Object> parameters) {
+		return baseService.runHQL("from UserRole where role != :role", parameters);
 	}
 
 	@Override
