@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.airsystem.sample.cms.domain.UserApp;
+import com.airsystem.sample.cms.domain.Users;
 
 /**
  * @author Budi Oktaviyan Suryanto (budi.oktaviyan@icloud.com)
@@ -45,7 +45,7 @@ public class UserAppController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String submitLogin(ModelMap modelMap, @ModelAttribute UserApp userApp) {
+	public String submitLogin(ModelMap modelMap, @ModelAttribute Users userApp) {
 		Authentication userAuthentication = new UsernamePasswordAuthenticationToken(userApp.getUsername(), userApp.getPassword());
 
 		try {

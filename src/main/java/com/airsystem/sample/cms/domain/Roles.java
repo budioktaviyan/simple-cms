@@ -11,22 +11,22 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "tbl_role")
-public class UserRole {
+@Table(name = "tbl_roles")
+public class Roles {
 	@Id
-	private Integer id;
+	private Long id;
 
 	private String role;
 
 	@ManyToOne
-	@JoinColumn(name = "user_id")
-	private UserApp userApp;
+	@JoinColumn(name = "userid")
+	private Users users;
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -38,11 +38,11 @@ public class UserRole {
 		this.role = role;
 	}
 
-	public UserApp getUserApp() {
-		return userApp;
+	public Users getUsers() {
+		return users;
 	}
 
-	public void setUserApp(UserApp userApp) {
-		this.userApp = userApp;
+	public void setUsers(Users users) {
+		this.users = users;
 	}
 }

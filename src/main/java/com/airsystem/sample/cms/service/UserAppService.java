@@ -15,7 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.airsystem.sample.cms.domain.UserApp;
+import com.airsystem.sample.cms.domain.Users;
 import com.airsystem.sample.cms.utils.Constant;
 
 /**
@@ -39,14 +39,14 @@ public class UserAppService implements UserDetailsService {
 			throw new UsernameNotFoundException("User Not Found!");
 		}
 
-		UserApp userEntity = (UserApp) users.get(0);
+		Users userEntity = (Users) users.get(0);
 		boolean enabled = Constant.IS_ENABLED;
 		boolean accountNonExpired = Constant.ACC_NOT_EXPIRED;
 		boolean credentialsNonExpired = Constant.CREDENTIAL_NOT_EXPIRED;
 		boolean accountNonLocked = Constant.ACC_NOT_LOCKED;
 
 		Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-		authorities.add(new SimpleGrantedAuthority(userEntity.getUserRole().getRole()));
+		authorities.add(new SimpleGrantedAuthority(userEntity.getRoles().getRole()));
 
 		User user = new User(username, userEntity.getPassword(), enabled,
 							 accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-configuration PUBLIC
-		  "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-		  "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+										 "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 	<session-factory>
 		<!-- Hibernate and C3PO Properties -->
 		<property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+		<property name="hibernate.hbm2ddl.auto">create</property>
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/application</property>
 		<property name="hibernate.connection.username">root</property>
@@ -19,8 +19,8 @@
 		<property name="c3p0.timeout">1024</property>
 
 		<!-- Hibernate Beans -->
-		<mapping class="com.airsystem.sample.cms.domain.UserApp" />
-		<mapping class="com.airsystem.sample.cms.domain.UserRole" />
+		<mapping class="com.airsystem.sample.cms.domain.Users" />
+		<mapping class="com.airsystem.sample.cms.domain.Roles" />
 		<mapping class="com.airsystem.sample.cms.domain.Employee" />
 	</session-factory>
 </hibernate-configuration>

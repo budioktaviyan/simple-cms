@@ -10,22 +10,22 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "tbl_user")
-public class UserApp {
+@Table(name = "tbl_users")
+public class Users {
 	@Id
-	private int id;
+	private Long id;
 
 	private String username;
 	private String password;
 
-	@OneToOne(mappedBy = "userApp")
-	private UserRole userRole;
+	@OneToOne(mappedBy = "users")
+	private Roles roles;
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -45,11 +45,11 @@ public class UserApp {
 		this.password = password;
 	}
 
-	public UserRole getUserRole() {
-		return userRole;
+	public Roles getRoles() {
+		return roles;
 	}
 
-	public void setUserRole(UserRole userRole) {
-		this.userRole = userRole;
+	public void setRoles(Roles roles) {
+		this.roles = roles;
 	}
 }

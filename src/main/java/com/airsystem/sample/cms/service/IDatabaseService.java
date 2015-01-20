@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.airsystem.sample.cms.domain.Employee;
-import com.airsystem.sample.cms.domain.UserApp;
+import com.airsystem.sample.cms.domain.Users;
 
 /**
  * @author Budi Oktaviyan Suryanto (budi.oktaviyan@icloud.com)
@@ -14,9 +14,9 @@ public interface IDatabaseService {
 
 	public List findAllUser(Map<String, Object> parameters);
 
-	public void saveorUpdateUser(UserApp user);
+	public void saveorUpdateUser(Users user);
 
-	public void deleteUser(UserApp user);
+	public void deleteUser(Users user);
 
 	public List findAllEmployee();
 
