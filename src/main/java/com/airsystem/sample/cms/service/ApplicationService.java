@@ -23,7 +23,7 @@ import com.airsystem.sample.cms.utils.Constant;
  */
 
 @Service(value = "userDetailsService")
-public class UserAppService implements UserDetailsService {
+public class ApplicationService implements UserDetailsService {
 	private static final String USERNAME = "username";
 
 	@Autowired
@@ -34,21 +34,21 @@ public class UserAppService implements UserDetailsService {
 		Map parameters = new HashMap();
 		parameters.put(USERNAME, username);
 
-		List users = databaseService.findUser(parameters);
+		List users = databaseService.findUsers(parameters);
 		if (users.size() == 0) {
 			throw new UsernameNotFoundException("User Not Found!");
 		}
 
-		Users userEntity = (Users) users.get(0);
+		Users usersEntity = (Users) users.get(0);
 		boolean enabled = Constant.IS_ENABLED;
 		boolean accountNonExpired = Constant.ACC_NOT_EXPIRED;
 		boolean credentialsNonExpired = Constant.CREDENTIAL_NOT_EXPIRED;
 		boolean accountNonLocked = Constant.ACC_NOT_LOCKED;
 
 		Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-		authorities.add(new SimpleGrantedAuthority(userEntity.getRoles().getRole()));
+		authorities.add(new SimpleGrantedAuthority(usersEntity.getRoles().getRole()));
 
-		User user = new User(username, userEntity.getPassword(), enabled,
+		User user = new User(username, usersEntity.getPassword(), enabled,
 							 accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
 		return user;
 	}

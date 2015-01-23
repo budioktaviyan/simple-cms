@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 @Service(value = "baseService")
 public class BaseService {
-
 	@Autowired
 	protected SessionFactory sessionFactory;
 

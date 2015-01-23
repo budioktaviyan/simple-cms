@@ -30,7 +30,7 @@
                         <hr />
                     </div>
                     <div class="col-lg-6">
-						<form class="form-group" method="post" action="<c:url value="/master/user/saveorupdate"/>">
+						<form class="form-group" method="post" action="<c:url value="/master/users/saveorupdate"/>">
                             <label>Username</label>
                             <div class="input-group form-margin-bottom">
                             	<input id="userId" type="hidden" />

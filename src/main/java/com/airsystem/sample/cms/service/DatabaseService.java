@@ -18,7 +18,6 @@ import com.airsystem.sample.cms.domain.Users;
 @Service(value = "iDatabaseService")
 @Transactional
 public class DatabaseService implements IDatabaseService {
-
 	@Autowired
 	protected SessionFactory sessionFactory;
 
@@ -26,23 +25,23 @@ public class DatabaseService implements IDatabaseService {
 	private BaseService baseService;
 
 	@Override
-	public List findUser(Map<String, Object> parameters) {
-		return baseService.runHQL("from UserApp where username = :username", parameters);
+	public List findUsers(Map<String, Object> parameters) {
+		return baseService.runHQL("from Users where username = :username", parameters);
 	}
 
 	@Override
-	public List findAllUser(Map<String, Object> parameters) {
-		return baseService.runHQL("from UserRole where role != :role", parameters);
+	public List findAllUsers(Map<String, Object> parameters) {
+		return baseService.runHQL("from Roles where role != :role", parameters);
 	}
 
 	@Override
-	public void saveorUpdateUser(Users user) {
-		sessionFactory.getCurrentSession().saveOrUpdate(user);
+	public void saveorUpdateUsers(Users users) {
+		sessionFactory.getCurrentSession().saveOrUpdate(users);
 	}
 
 	@Override
-	public void deleteUser(Users user) {
-		sessionFactory.getCurrentSession().delete(user);
+	public void deleteUsers(Users users) {
+		sessionFactory.getCurrentSession().delete(users);
 	}
 
 	@Override

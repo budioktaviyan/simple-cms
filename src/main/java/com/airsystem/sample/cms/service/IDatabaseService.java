@@ -10,13 +10,13 @@ import com.airsystem.sample.cms.domain.Users;
  * @author Budi Oktaviyan Suryanto (budi.oktaviyan@icloud.com)
  */
 public interface IDatabaseService {
-	public List findUser(Map<String, Object> parameters);
+	public List findUsers(Map<String, Object> parameters);
 
-	public List findAllUser(Map<String, Object> parameters);
+	public List findAllUsers(Map<String, Object> parameters);
 
-	public void saveorUpdateUser(Users user);
+	public void saveorUpdateUsers(Users users);
 
-	public void deleteUser(Users user);
+	public void deleteUsers(Users users);
 
 	public List findAllEmployee();
 

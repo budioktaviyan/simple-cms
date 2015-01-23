@@ -11,10 +11,10 @@
 	<security:http use-expressions="true" disable-url-rewriting="true">
 		<security:intercept-url pattern="/login" access="permitAll" />
 		<security:intercept-url pattern="/*" access="hasAnyRole('ADMIN','USER')" />
-		<security:intercept-url pattern="/master/user" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/master/users" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/master/employee" access="hasAnyRole('ADMIN','USER')" />
 		<security:form-login login-page="/login" default-target-url="/" />
-		<security:logout invalidate-session="true" logout-success-url="/logout" delete-cookies="JSESSIONID" />
+		<security:logout invalidate-session="true" logout-success-url="/logout" delete-cookies="true" />
 	</security:http>
 
 	<security:authentication-manager alias="authenticationManager">
