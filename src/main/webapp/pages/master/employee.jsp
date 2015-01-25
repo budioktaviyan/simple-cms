@@ -12,7 +12,7 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-brand"><a>Simple CMS</a></li>
                 <li class="sidebar"><a href="<c:url value="/master/users"/>">User</a></li>
-                <li class="sidebar"><a>Employee</a></li>
+                <li class="sidebar"><div class="white">Employee</div></li>
                 <hr class="sidebar-hr" />
 				<li><a href="<c:url value="/logout"/>">Logout</a></li>
             </ul>
