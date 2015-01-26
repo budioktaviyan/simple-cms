@@ -11,14 +11,12 @@
 <link href="<c:url value="/res/css/master.css"/>" rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<sitemesh:write property='body' />
 	<script src="<c:url value="/res/js/plugins/bootstrap-datepicker.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/plugins/bootstrap-table.min.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/plugins/jquery.alphanum.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/plugins/moment.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/plugins/spin.min.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/plugins/sweet-alert.min.js"/>" type="text/javascript"></script>
-	<script src="<c:url value="/res/js/common.js"/>" type="text/javascript"></script>
-	<script src="<c:url value="/res/js/master.js"/>" type="text/javascript"></script>
+	<sitemesh:write property='body' />
 </body>
 </html>

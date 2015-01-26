@@ -102,5 +102,7 @@
 	<script>
 		var path = '${url_path}';
 	</script>
+	<script src="<c:url value="/res/js/common.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/res/js/master.js"/>" type="text/javascript"></script>
 </body>
 </html>

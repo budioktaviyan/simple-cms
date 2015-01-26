@@ -14,8 +14,8 @@
 <sitemesh:write property='head' />
 </head>
 <body>
-	<sitemesh:write property='body' />
 	<script src="<c:url value="/res/js/plugins/jquery.min.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/plugins/bootstrap.min.js"/>" type="text/javascript"></script>
+	<sitemesh:write property='body' />
 </body>
 </html>
