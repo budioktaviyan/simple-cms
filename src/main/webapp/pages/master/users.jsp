@@ -47,6 +47,9 @@
                             </select>
                             <label>Password</label>
                             <div class="input-group lastform-margin-bottom">
+                            	<div class="input-group-addon">
+                                    <i class="glyphicon glyphicon-eye-open"></i>
+                                </div>
                                 <input id="password" class="form-control" type="password" placeholder="Input password" />
                             </div>
                             <a id="form-save" class="btn btn-success btn-margin-right btn-form" role="button" disabled="disabled">
@@ -87,5 +90,6 @@
 	<script>
 		var path = '${url_path}';
 	</script>
+	<script src="<c:url value="/res/js/users.js"/>" type="text/javascript"></script>
 </body>
 </html>

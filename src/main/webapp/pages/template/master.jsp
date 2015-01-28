@@ -17,6 +17,7 @@
 	<script src="<c:url value="/res/js/plugins/moment.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/plugins/spin.min.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/plugins/sweet-alert.min.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/res/js/common.js"/>" type="text/javascript"></script>
 	<sitemesh:write property='body' />
 </body>
 </html>
