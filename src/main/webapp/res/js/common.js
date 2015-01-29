@@ -4,11 +4,11 @@ $(document).ready(function() {
 	$('#menu-toggle').click(function(e) {
 		toggleObject(e, '#wrapper');
 	});
-});
 
-$('#form-reset').click(function() {
-	resetForm();
-	resetButton();
+	$('#form-reset').click(function() {
+		resetForm();
+		resetButton();
+	});
 });
 
 function toggleObject(e, selector) {

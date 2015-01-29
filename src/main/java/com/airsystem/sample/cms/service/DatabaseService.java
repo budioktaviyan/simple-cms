@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.airsystem.sample.cms.domain.Employee;
+import com.airsystem.sample.cms.domain.Roles;
 import com.airsystem.sample.cms.domain.Users;
 
 /**
@@ -35,8 +36,9 @@ public class DatabaseService implements IDatabaseService {
 	}
 
 	@Override
-	public void saveorUpdateUsers(Users users) {
+	public void saveorUpdateUsers(Users users, Roles roles) {
 		sessionFactory.getCurrentSession().saveOrUpdate(users);
+		sessionFactory.getCurrentSession().saveOrUpdate(roles);
 	}
 
 	@Override

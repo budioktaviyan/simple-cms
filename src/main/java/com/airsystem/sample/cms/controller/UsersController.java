@@ -6,12 +6,14 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.airsystem.sample.cms.domain.Roles;
 import com.airsystem.sample.cms.domain.Users;
 import com.airsystem.sample.cms.service.IDatabaseService;
 
@@ -46,7 +48,14 @@ public class UsersController {
 	public Map<String, String> saveorupdate(@RequestBody Users users) {
 		Map<String, String> jsonObject = new HashMap<String, String>();
 		try {
-			databaseService.saveorUpdateUsers(users);
+			ShaPasswordEncoder shaPasswordEncoder = new ShaPasswordEncoder();
+			Roles roles = new Roles();
+			roles.setRole("USER");
+			roles.setUsers(users);
+			users.setRoles(roles);
+			users.setPassword(shaPasswordEncoder.encodePassword(users.getPassword(), null));
+
+			databaseService.saveorUpdateUsers(users, roles);
 			jsonObject.put(RESPONSE, SUCCESS);
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
