@@ -50,7 +50,7 @@ public class UsersController {
 		try {
 			ShaPasswordEncoder shaPasswordEncoder = new ShaPasswordEncoder();
 			Roles roles = new Roles();
-			roles.setRole("USER");
+			roles.setName(users.getRoles().getName());
 			roles.setUsers(users);
 			users.setRoles(roles);
 			users.setPassword(shaPasswordEncoder.encodePassword(users.getPassword(), null));

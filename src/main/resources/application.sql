@@ -9,7 +9,7 @@ CREATE TABLE `tbl_users` (
 DROP TABLE IF EXISTS `tbl_roles`;
 CREATE TABLE `tbl_roles` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `role` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `userid` bigint(20) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_USERS` (`userid`),

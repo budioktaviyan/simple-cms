@@ -29,8 +29,8 @@ function saveorupdateData() {
 	var jsonObject = {
 		'id' : $('#userId').val(),
 		'username' : $('#username').val(),
-		'role' : $('#role').val(),
-		'password' : $('#password').val()
+		'password' : $('#password').val(),
+		'roles.name' : $('#role').val()
 	};
 
 	var spinner = getSpinner();

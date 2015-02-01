@@ -46,7 +46,7 @@ public class ApplicationService implements UserDetailsService {
 		boolean accountNonLocked = Constant.ACC_NOT_LOCKED;
 
 		Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-		authorities.add(new SimpleGrantedAuthority(usersEntity.getRoles().getRole()));
+		authorities.add(new SimpleGrantedAuthority(usersEntity.getRoles().getName()));
 
 		User user = new User(username, usersEntity.getPassword(), enabled,
 							 accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);

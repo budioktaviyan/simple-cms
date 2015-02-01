@@ -21,7 +21,7 @@ public class Roles {
 	private Long id;
 
 	@Column(nullable = false)
-	private String role;
+	private String name;
 
 	@ManyToOne
 	@JoinColumn(name = "userid")
@@ -35,12 +35,12 @@ public class Roles {
 		id = pId;
 	}
 
-	public String getRole() {
-		return role;
+	public String getName() {
+		return name;
 	}
 
-	public void setRole(String pRole) {
-		role = pRole;
+	public void setName(String pName) {
+		name = pName;
 	}
 
 	public Users getUsers() {
