@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.airsystem.sample.cms.domain.Roles;
+import com.airsystem.sample.cms.domain.UserDetails;
 import com.airsystem.sample.cms.domain.Users;
 import com.airsystem.sample.cms.service.IDatabaseService;
 
@@ -45,17 +46,21 @@ public class UsersController {
 
 	@RequestMapping(value = "/saveorupdate", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, String> saveorupdate(@RequestBody Users users) {
+	public Map<String, String> saveorupdate(@RequestBody UserDetails userDetails) {
 		Map<String, String> jsonObject = new HashMap<String, String>();
 		try {
 			ShaPasswordEncoder shaPasswordEncoder = new ShaPasswordEncoder();
-			Roles roles = new Roles();
-			roles.setName(users.getRoles().getName());
-			roles.setUsers(users);
-			users.setRoles(roles);
-			users.setPassword(shaPasswordEncoder.encodePassword(users.getPassword(), null));
+			Users userid = null;
+			for (Users users : userDetails.getUsers()) {
+				userid = users;
+				users.setPassword(shaPasswordEncoder.encodePassword(users.getPassword(), null));
+				databaseService.saveorUpdateUsers(users);
+			}
 
-			databaseService.saveorUpdateUsers(users, roles);
+			for (Roles roles : userDetails.getRoles()) {
+				roles.setUsers(userid);
+				databaseService.saveorUpdateRoles(roles);
+			}
 			jsonObject.put(RESPONSE, SUCCESS);
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);

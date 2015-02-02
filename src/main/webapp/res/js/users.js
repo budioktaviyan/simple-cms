@@ -27,10 +27,14 @@ function firstInput() {
 
 function saveorupdateData() {
 	var jsonObject = {
-		'id' : $('#userId').val(),
-		'username' : $('#username').val(),
-		'password' : $('#password').val(),
-		'roles.name' : $('#role').val()
+		'users' : [ {
+			'id' : $('#userId').val(),
+			'username' : $('#username').val(),
+			'password' : $('#password').val()
+		}, ],
+		'roles' : [ {
+			'name' : $('#role').val(),
+		}, ]
 	};
 
 	var spinner = getSpinner();

@@ -15,7 +15,9 @@ public interface IDatabaseService {
 
 	public List findAllUsers(Map<String, Object> parameters);
 
-	public void saveorUpdateUsers(Users users, Roles roles);
+	public void saveorUpdateUsers(Users users);
+
+	public void saveorUpdateRoles(Roles roles);
 
 	public void deleteUsers(Users users);
 
