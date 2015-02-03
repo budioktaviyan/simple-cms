@@ -48,7 +48,7 @@ function saveorupdateData() {
 			'password' : $('#password').val()
 		}, ],
 		'roles' : [ {
-			'name' : $('#role').val(),
+			'name' : $('#role').val()
 		}, ]
 	};
 
