@@ -45,11 +45,8 @@
 							<option>USER</option>
 						</select>
 						<label>Password</label>
-						<div class="input-group lastform-margin-bottom">
-							<a href="#password-toggle" id="password-toggle" class="input-group-addon" onfocus="this.blur()">
-								<i class="glyphicon glyphicon-eye-open"></i>
-							</a>
-							<input id="password" class="form-control" type="password" placeholder="Input password" />
+						<div class="input-group form-width lastform-margin-bottom">
+							<input id="password" class="form-control" type="password" placeholder="Input password" data-toggle="password" data-placement="before">
 						</div>
 						<a id="form-save" class="btn btn-success btn-margin-right btn-form" role="button" disabled="disabled">
 							<span>Save</span>

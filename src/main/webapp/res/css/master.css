@@ -95,6 +95,10 @@
 }
 
 /* Form Styles */
+.form-width {
+	width: 100%;
+}
+
 .form-header-margin-top {
 	margin-top: -3%;
 }

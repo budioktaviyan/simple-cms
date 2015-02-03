@@ -2,10 +2,6 @@ $('#username').keyup(function() {
 	firstInput();
 });
 
-$('#password-toggle').click(function(e) {
-	togglePassword(e, '#password');
-});
-
 $('#form-save').click(function(e) {
 	e.preventDefault();
 	saveorupdateData();
@@ -26,17 +22,6 @@ function firstInput() {
 		$('.btn-form').removeAttr('disabled');
 	} else {
 		$('.btn-form').attr('disabled', 'disabled');
-	}
-}
-
-function togglePassword(e, selector) {
-	e.preventDefault();
-
-	var type = $(selector).attr('type');
-	if (type == 'text') {
-		$(selector).attr('type', 'password');
-	} else {
-		$(selector).attr('type', 'text');
 	}
 }
 
