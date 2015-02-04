@@ -1,5 +1,9 @@
 $(document).ready(function() {
 	passwordToggled('#password');
+
+	$('#form-reset').click(function() {
+		resetPasswordToggled('#password');
+	});
 });
 
 $('#username').keyup(function() {
@@ -33,6 +37,10 @@ function passwordToggled(selector) {
 	$(selector).password({
 		placement : 'before'
 	});
+}
+
+function resetPasswordToggled(selector) {
+	$(selector).password('hide');
 }
 
 function saveorupdateData() {
