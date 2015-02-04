@@ -88,3 +88,46 @@ function saveorupdateData() {
 		getAlertNotification(errorThrown, textStatus, 'warning', 'Dismiss', 'btn-warning');
 	});
 }
+
+function updateData(jsonObject) {
+	var users = JSON.parse(jsonObject);
+
+	$('#userId').val(users.id);
+	$('#username').val(users.username);
+	$('#password').val(users.password);
+}
+
+function getUserData(selector) {
+	$(selector).bootstrapTable('refresh').bootstrapTable({
+		height : 400,
+		method : 'GET',
+		pagination : true,
+		search : true,
+		searchAlign : 'left',
+		showRefresh : true,
+		flat : true,
+		url : path + '/master/users/search',
+
+		columns : [ {
+			field : 'id',
+			visible : false
+		}, {
+			align : 'left',
+			field : 'username',
+			title : 'Username'
+		}, {
+			align : 'center',
+			field : 'roles.name',
+			title : 'Role'
+		}, {
+			field : 'password',
+			visible : false
+		}, {
+			align : 'center',
+			field : 'action',
+			formatter : 'actionFormatter',
+			events : 'actionEvents',
+			title : 'Action'
+		} ]
+	});
+}

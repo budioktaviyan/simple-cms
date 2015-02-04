@@ -32,7 +32,7 @@ public class DatabaseService implements IDatabaseService {
 
 	@Override
 	public List findAllUsers(Map<String, Object> parameters) {
-		return baseService.runHQL("from Roles where name != :name", parameters);
+		return baseService.runHQL("from Users where roles.name != :name", parameters);
 	}
 
 	@Override

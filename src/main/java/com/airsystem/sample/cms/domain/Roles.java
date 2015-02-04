@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 /**
  * @author Budi Oktaviyan Suryanto (budi.oktaviyan@icloud.com)
  */
@@ -25,6 +27,7 @@ public class Roles {
 
 	@ManyToOne
 	@JoinColumn(name = "userid")
+	@JsonBackReference
 	private Users users;
 
 	public Long getId() {

@@ -85,6 +85,8 @@
 	<script>
 		var path = '${url_path}';
 	</script>
+	<script src="<c:url value="/res/js/plugins/bootstrap-show-password.min.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/res/js/plugins/bootstrap-table-flatJSON.min.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/users.js"/>" type="text/javascript"></script>
 </body>
 </html>

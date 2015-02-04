@@ -27,7 +27,7 @@ import com.airsystem.sample.cms.service.IDatabaseService;
 public class UsersController {
 	private static final Logger LOG = Logger.getLogger(UsersController.class.getSimpleName());
 
-	private static final String ROLE = "role";
+	private static final String ROLE_NAME = "name";
 	private static final String ADMIN = "ADMIN";
 	private static final String RESPONSE = "response";
 	private static final String SUCCESS = "success";
@@ -40,7 +40,7 @@ public class UsersController {
 	@ResponseBody
 	public List<Users> search() {
 		Map parameters = new HashMap();
-		parameters.put(ROLE, ADMIN);
+		parameters.put(ROLE_NAME, ADMIN);
 		return databaseService.findAllUsers(parameters);
 	}
 

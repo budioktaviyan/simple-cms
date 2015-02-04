@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 /**
  * @author Budi Oktaviyan Suryanto (budi.oktaviyan@icloud.com)
  */
@@ -26,6 +28,7 @@ public class Users {
 	private String password;
 
 	@OneToOne(mappedBy = "users")
+	@JsonManagedReference
 	private Roles roles;
 
 	public Long getId() {

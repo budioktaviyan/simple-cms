@@ -12,7 +12,6 @@
 </head>
 <body>
 	<script src="<c:url value="/res/js/plugins/bootstrap-datepicker.js"/>" type="text/javascript"></script>
-	<script src="<c:url value="/res/js/plugins/bootstrap-show-password.min.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/plugins/bootstrap-table.min.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/plugins/jquery.alphanum.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/res/js/plugins/moment.js"/>" type="text/javascript"></script>
