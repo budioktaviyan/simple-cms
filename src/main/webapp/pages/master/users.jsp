@@ -46,7 +46,7 @@
 						</select>
 						<label>Password</label>
 						<div class="input-group form-width lastform-margin-bottom">
-							<input id="password" class="form-control" type="password" placeholder="Input password" data-toggle="password" data-placement="before">
+							<input id="password" class="form-control" type="password" placeholder="Input password" />
 						</div>
 						<a id="form-save" class="btn btn-success btn-margin-right btn-form" role="button" disabled="disabled">
 							<span>Save</span>

@@ -1,3 +1,7 @@
+$(document).ready(function() {
+	passwordToggled('#password');
+});
+
 $('#username').keyup(function() {
 	firstInput();
 });
@@ -23,6 +27,12 @@ function firstInput() {
 	} else {
 		$('.btn-form').attr('disabled', 'disabled');
 	}
+}
+
+function passwordToggled(selector) {
+	$(selector).password({
+		placement : 'before'
+	});
 }
 
 function saveorupdateData() {
