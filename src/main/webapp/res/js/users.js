@@ -98,7 +98,6 @@ function updateData(jsonObject) {
 	$('#userId').val(users.id);
 	$('#username').val(users.username);
 	$('#role').val(roles[4]);
-	$('#password').val(users.password);
 }
 
 function getUserData(selector) {
@@ -123,9 +122,6 @@ function getUserData(selector) {
 			align : 'center',
 			field : 'roles.name',
 			title : 'Role'
-		}, {
-			field : 'password',
-			visible : false
 		}, {
 			align : 'center',
 			field : 'action',
