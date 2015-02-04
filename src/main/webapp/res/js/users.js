@@ -91,9 +91,13 @@ function saveorupdateData() {
 
 function updateData(jsonObject) {
 	var users = JSON.parse(jsonObject);
+	var roles = $.map(users, function(elements) {
+		return elements;
+	});
 
 	$('#userId').val(users.id);
 	$('#username').val(users.username);
+	$('#role').val(roles[4]);
 	$('#password').val(users.password);
 }
 
