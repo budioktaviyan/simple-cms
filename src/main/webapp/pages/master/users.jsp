@@ -40,6 +40,7 @@
 							</a>
 						</div>
 						<label>Role</label>
+						<input id="roleId" type="hidden" />
 						<select id="role" class="form-control form-margin-bottom">
 							<option>ADMIN</option>
 							<option>USER</option>

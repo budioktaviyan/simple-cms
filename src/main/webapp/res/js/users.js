@@ -51,6 +51,7 @@ function saveorupdateData() {
 			'password' : $('#password').val()
 		}, ],
 		'roles' : [ {
+			'id' : $('#roleId').val(),
 			'name' : $('#role').val()
 		}, ]
 	};
@@ -97,6 +98,7 @@ function updateData(jsonObject) {
 
 	$('#userId').val(users.id);
 	$('#username').val(users.username);
+	$('#roleId').val(roles[3]);
 	$('#role').val(roles[4]);
 }
 
@@ -118,6 +120,9 @@ function getUserData(selector) {
 			align : 'left',
 			field : 'username',
 			title : 'Username'
+		}, {
+			field : 'roles.id',
+			visible : false
 		}, {
 			align : 'center',
 			field : 'roles.name',

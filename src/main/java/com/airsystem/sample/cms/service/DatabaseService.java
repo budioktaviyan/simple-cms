@@ -36,12 +36,8 @@ public class DatabaseService implements IDatabaseService {
 	}
 
 	@Override
-	public void saveorUpdateUsers(Users users) {
+	public void saveorUpdateUsers(Users users, Roles roles) {
 		sessionFactory.getCurrentSession().saveOrUpdate(users);
-	}
-
-	@Override
-	public void saveorUpdateRoles(Roles roles) {
 		sessionFactory.getCurrentSession().saveOrUpdate(roles);
 	}
 

@@ -50,17 +50,12 @@ public class UsersController {
 		Map<String, String> jsonObject = new HashMap<String, String>();
 		try {
 			ShaPasswordEncoder shaPasswordEncoder = new ShaPasswordEncoder();
-			Users userid = null;
-			for (Users users : userDetails.getUsers()) {
-				userid = users;
-				users.setPassword(shaPasswordEncoder.encodePassword(users.getPassword(), null));
-				databaseService.saveorUpdateUsers(users);
-			}
+			Users users = userDetails.getUsers().get(0);
+			Roles roles = userDetails.getRoles().get(0);
 
-			for (Roles roles : userDetails.getRoles()) {
-				roles.setUsers(userid);
-				databaseService.saveorUpdateRoles(roles);
-			}
+			users.setPassword(shaPasswordEncoder.encodePassword(users.getPassword(), null));
+			roles.setUsers(users);
+			databaseService.saveorUpdateUsers(users, roles);
 			jsonObject.put(RESPONSE, SUCCESS);
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
