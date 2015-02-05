@@ -80,6 +80,7 @@ function saveorupdateData() {
 			getAlertNotification('Success!', 'Data successfully saved!', 'success', 'OK', 'btn-success');
 			resetForm();
 			resetButton();
+			resetPasswordToggled('#password');
 			break;
 		}
 		case 'fail': {
@@ -105,6 +106,40 @@ function updateData(jsonObject) {
 	$('#username').val(users.username);
 	$('#roleId').val(roles[3]);
 	$('#role').val(roles[4]);
+}
+
+function deleteData(jsonObject) {
+	var spinner = getSpinner();
+	var request = $.ajax({
+		type : 'POST',
+		url : path + '/master/users/delete',
+		contentType : 'application/json; charset=UTF-8',
+		data : jsonObject,
+		beforeSend : function() {
+			var target = $('#user-data').get(0);
+			spinner.spin(target);
+		}
+	});
+
+	request.success(function(data) {
+		spinner.stop();
+		switch (data.response) {
+		case 'success': {
+			getAlertNotification('Success!', 'Data successfully deleted!', 'success', 'OK', 'btn-success');
+			refreshTable('#user-data');
+			break;
+		}
+		case 'fail': {
+			getAlertNotification('Failed!', 'Failed deleting data!', 'error', 'Cancel', 'btn-danger');
+			break;
+		}
+		}
+	});
+
+	request.error(function(textStatus, errorThrown) {
+		spinner.stop();
+		getAlertNotification(errorThrown, textStatus, 'warning', 'Dismiss', 'btn-warning');
+	});
 }
 
 function getUserData(selector) {
