@@ -18,7 +18,7 @@
 						<img class="profile-img" src="<c:url value="/res/assets/logo.png"/>">
 					</c:if>
 					<form class="form-signin" method="post" action="<c:url value="/login"/>">
-						<input type="text" class="form-control" placeholder="Username" name="username" required autofocus />
+						<input id="username" type="text" class="form-control" placeholder="Username" name="username" required autofocus />
 						<input type="password" class="form-control" placeholder="Password" name="password" required />
 						<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
 					</form>
@@ -26,5 +26,8 @@
 			</div>
 		</div>
 	</div>
+
+	<script src="<c:url value="/res/js/plugins/jquery.alphanum.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/res/js/login.js"/>" type="text/javascript"></script>
 </body>
 </html>

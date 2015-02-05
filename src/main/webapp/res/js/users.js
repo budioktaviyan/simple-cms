@@ -1,6 +1,11 @@
 $(document).ready(function() {
 	passwordToggled('#password');
 
+	$('#username').alphanum({
+		allowSpace : false,
+		allowUpper : false
+	});
+
 	$('#form-reset').click(function() {
 		resetPasswordToggled('#password');
 	});
