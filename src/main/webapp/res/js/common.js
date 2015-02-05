@@ -48,7 +48,7 @@ function getAlertNotification(titleVal, textVal, typeVal, buttonVal, classVal) {
 }
 
 function genericFormatter(value) {
-	if (value != '') {
+	if (value.length !== 0) {
 		return value;
 	} else {
 		return 'N/A';
@@ -83,11 +83,4 @@ function refreshTable(selector) {
 function resetButton() {
 	$('#form-save').show();
 	$('#form-update').hide();
-}
-
-function updateButton() {
-	$('#search-modal').modal('hide');
-	$('#form-save').hide();
-	$('#form-update').removeAttr('disabled');
-	$('#form-update').show();
 }

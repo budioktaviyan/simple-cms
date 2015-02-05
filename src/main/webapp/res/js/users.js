@@ -6,7 +6,7 @@ $(document).ready(function() {
 	});
 });
 
-$('#username').keyup(function() {
+$('input').keyup(function() {
 	firstInput();
 });
 
@@ -26,7 +26,7 @@ $('#modal-toggle').click(function(e) {
 });
 
 function firstInput() {
-	if ($('#username').val() != '') {
+	if ($('#username').val().length !== 0 && $('#password').val().length !== 0) {
 		$('.btn-form').removeAttr('disabled');
 	} else {
 		$('.btn-form').attr('disabled', 'disabled');
@@ -130,4 +130,11 @@ function getUserData(selector) {
 			title : 'Action'
 		} ]
 	});
+}
+
+function updateButton() {
+	$('#search-modal').modal('hide');
+	$('#form-save').hide();
+	$('#form-update').attr('disabled', 'disabled');
+	$('#form-update').show();
 }

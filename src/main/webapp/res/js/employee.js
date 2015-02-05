@@ -29,7 +29,7 @@ $('#modal-toggle').click(function(e) {
 });
 
 function firstInput() {
-	if ($('#name').val() != '') {
+	if ($('#name').val().length !== 0) {
 		$('.btn-form').removeAttr('disabled');
 	} else {
 		$('.btn-form').attr('disabled', 'disabled');
@@ -44,7 +44,7 @@ function openDatepicker(selector) {
 }
 
 function getDateFormat(param, dateFormat) {
-	if (param != '') {
+	if (param.length !== 0) {
 		return moment(param).format(dateFormat);
 	}
 }
@@ -200,4 +200,11 @@ function birthdateFormatter(value, type) {
 		}
 		}
 	}
+}
+
+function updateButton() {
+	$('#search-modal').modal('hide');
+	$('#form-save').hide();
+	$('#form-update').removeAttr('disabled');
+	$('#form-update').show();
 }
