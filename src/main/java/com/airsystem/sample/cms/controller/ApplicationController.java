@@ -31,6 +31,8 @@ public class ApplicationController {
 	private static final String URI_LOGIN = "login";
 	private static final String URI_USERS = "master/users";
 	private static final String URI_EMPLOYEE = "master/employee";
+	private static final String URI_PASSWORD = "password";
+	private static final String URI_REDIRECT_INDEX = "redirect:/";
 	private static final String URI_REDIRECT_LOGIN = "redirect:/login";
 	private static final String URI_REDIRECT_USERS = "redirect:/master/users";
 	private static final String URI_REDIRECT_EMPLOYEE = "redirect:/master/employee";
@@ -90,6 +92,17 @@ public class ApplicationController {
 	@RequestMapping(value = "/master/employee", method = RequestMethod.GET)
 	public String openEmployee() {
 		return URI_EMPLOYEE;
+	}
+
+	@RequestMapping(value = "/password", method = RequestMethod.GET)
+	public String openChangePassword(ModelMap modelMap) {
+		modelMap.put("authorized", true);
+		return URI_PASSWORD;
+	}
+
+	@RequestMapping(value = "/password", method = RequestMethod.POST)
+	public String submitChangePassword(ModelMap modelMap) {
+		return URI_REDIRECT_INDEX;
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)

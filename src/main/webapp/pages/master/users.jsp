@@ -14,6 +14,7 @@
 				<li class="sidebar"><div class="white">User</div></li>
 				<li class="sidebar"><a href="<c:url value="/master/employee"/>">Employee</a></li>
 				<hr class="sidebar-hr" />
+				<li><a href="<c:url value="/password"/>">Change Password</a></li>
 				<li><a href="<c:url value="/logout"/>">Logout</a></li>
 			</ul>
 		</div>

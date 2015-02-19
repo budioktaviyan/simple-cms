@@ -10,7 +10,7 @@
 
 	<security:http use-expressions="true" disable-url-rewriting="true">
 		<security:intercept-url pattern="/login" access="permitAll" />
-		<security:intercept-url pattern="/*" access="hasAnyRole('ADMIN','USER')" />
+		<security:intercept-url pattern="/password" access="hasAnyRole('ADMIN','USER')" />
 		<security:intercept-url pattern="/master/users" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/master/employee" access="hasAnyRole('ADMIN','USER')" />
 		<security:form-login login-page="/login" default-target-url="/" />
