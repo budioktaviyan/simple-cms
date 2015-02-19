@@ -17,6 +17,8 @@ public interface IDatabaseService {
 
 	public void saveorUpdateUsers(Users users, Roles roles);
 
+	public int updateUsers(Map<String, Object> parameters) throws Exception;
+
 	public void deleteUsers(Users users);
 
 	public List findAllEmployee();

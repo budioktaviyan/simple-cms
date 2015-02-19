@@ -1,13 +1,18 @@
 package com.airsystem.sample.cms.controller;
 
+import java.security.Principal;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -18,7 +23,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.airsystem.sample.cms.domain.Password;
 import com.airsystem.sample.cms.domain.Users;
+import com.airsystem.sample.cms.service.IDatabaseService;
 
 /**
  * @author Budi Oktaviyan Suryanto (budi.oktaviyan@icloud.com)
@@ -32,8 +39,8 @@ public class ApplicationController {
 	private static final String URI_USERS = "master/users";
 	private static final String URI_EMPLOYEE = "master/employee";
 	private static final String URI_PASSWORD = "password";
-	private static final String URI_REDIRECT_INDEX = "redirect:/";
 	private static final String URI_REDIRECT_LOGIN = "redirect:/login";
+	private static final String URI_REDIRECT_LOGOUT = "redirect:/logout";
 	private static final String URI_REDIRECT_USERS = "redirect:/master/users";
 	private static final String URI_REDIRECT_EMPLOYEE = "redirect:/master/employee";
 	private static final String ROLE_ADMIN = "ADMIN";
@@ -41,6 +48,9 @@ public class ApplicationController {
 
 	@Resource(name = "authenticationManager")
 	private AuthenticationManager authenticationManager;
+
+	@Autowired
+	private IDatabaseService databaseService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String open(HttpSession httpSession) {
@@ -101,8 +111,25 @@ public class ApplicationController {
 	}
 
 	@RequestMapping(value = "/password", method = RequestMethod.POST)
-	public String submitChangePassword(ModelMap modelMap) {
-		return URI_REDIRECT_INDEX;
+	public String submitChangePassword(ModelMap modelMap, Principal principal, @ModelAttribute Password password) {
+		try {
+			ShaPasswordEncoder shaPasswordEncoder = new ShaPasswordEncoder();
+			String username = principal.getName();
+			String oldpassword = shaPasswordEncoder.encodePassword(password.getOldpassword(), null);
+			String newpassword = shaPasswordEncoder.encodePassword(password.getNewpassword(), null);
+
+			Map parameters = new HashMap();
+			parameters.put("username", username);
+			parameters.put("oldpassword", oldpassword);
+			parameters.put("newpassword", newpassword);
+
+			databaseService.updateUsers(parameters);
+			return URI_REDIRECT_LOGOUT;
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			modelMap.put("authorized", false);
+			return URI_PASSWORD;
+		}
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)

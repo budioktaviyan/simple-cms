@@ -27,4 +27,16 @@ public class BaseService {
 		}
 		return query.list();
 	}
+
+	public int executeUpdateHQL(String hql, Map<String, Object> parameters) {
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+
+		if (parameters != null) {
+			for (String key : parameters.keySet()) {
+				query.setParameter(key, parameters.get(key));
+			}
+		}
+
+		return query.executeUpdate();
+	}
 }

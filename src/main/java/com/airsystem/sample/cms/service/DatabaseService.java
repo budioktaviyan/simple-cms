@@ -42,6 +42,18 @@ public class DatabaseService implements IDatabaseService {
 	}
 
 	@Override
+	public int updateUsers(Map<String, Object> parameters) throws Exception {
+		String query = "update Users set password = :newpassword where username = :username and password = :oldpassword";
+		int result = baseService.executeUpdateHQL(query, parameters);
+
+		if (result == 0) {
+			throw new Exception("update password not valid");
+		}
+
+		return result;
+	}
+
+	@Override
 	public void deleteUsers(Users users) {
 		sessionFactory.getCurrentSession().delete(users);
 	}
